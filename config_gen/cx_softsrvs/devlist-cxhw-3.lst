@@ -1,0 +1,176 @@
+devtype k500_bpm w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1 {
+x 0
+z 1
+I 2
+c 3
+x0 4
+z0 5
+d 6
+sz 7
+sx 8
+}
+
+dev k500_bpm_e2v4_4DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.4DT1 k500_bpm_e2v4_4DT1
+dev k500_bpm_e2v4_3DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.3DT1 k500_bpm_e2v4_3DT1
+dev k500_bpm_e2v4_5DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT1 k500_bpm_e2v4_5DT1
+dev k500_bpm_e2v4_5DT2 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT2 k500_bpm_e2v4_5DT2
+dev k500_bpm_e2v4_5DT3 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT3 k500_bpm_e2v4_5DT3
+dev k500_bpm_e2v4_5DT4 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT4 k500_bpm_e2v4_5DT4
+dev k500_bpm_e2v4_5DT5 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT5 k500_bpm_e2v4_5DT5
+dev k500_bpm_e2v4_5DT6 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT6 k500_bpm_e2v4_5DT6
+dev k500_bpm_e2v4_5DT7 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT7 k500_bpm_e2v4_5DT7
+dev k500_bpm_e2v4_5DT8 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT8 k500_bpm_e2v4_5DT8
+dev k500_bpm_e2v4_5DT9 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT9 k500_bpm_e2v4_5DT9
+dev k500_bpm_e2v4_5DT10 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT10 k500_bpm_e2v4_5DT10
+dev k500_bpm_e2v4_5DT11 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT11 k500_bpm_e2v4_5DT11
+dev k500_bpm_e2v4_5DT12 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT12 k500_bpm_e2v4_5DT12
+dev k500_bpm_e2v4_5DT13 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v4.5DT13 k500_bpm_e2v4_5DT13
+dev k500_bpm_p2v4_4DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.4DT1 k500_bpm_p2v4_4DT1
+dev k500_bpm_p2v4_3DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.3DT1 k500_bpm_p2v4_3DT1
+dev k500_bpm_p2v4_5DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT1 k500_bpm_p2v4_5DT1
+dev k500_bpm_p2v4_5DT2 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT2 k500_bpm_p2v4_5DT2
+dev k500_bpm_p2v4_5DT3 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT3 k500_bpm_p2v4_5DT3
+dev k500_bpm_p2v4_5DT4 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT4 k500_bpm_p2v4_5DT4
+dev k500_bpm_p2v4_5DT5 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT5 k500_bpm_p2v4_5DT5
+dev k500_bpm_p2v4_5DT6 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT6 k500_bpm_p2v4_5DT6
+dev k500_bpm_p2v4_5DT7 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT7 k500_bpm_p2v4_5DT7
+dev k500_bpm_p2v4_5DT8 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT8 k500_bpm_p2v4_5DT8
+dev k500_bpm_p2v4_5DT9 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT9 k500_bpm_p2v4_5DT9
+dev k500_bpm_p2v4_5DT10 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT10 k500_bpm_p2v4_5DT10
+dev k500_bpm_p2v4_5DT11 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT11 k500_bpm_p2v4_5DT11
+dev k500_bpm_p2v4_5DT12 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT12 k500_bpm_p2v4_5DT12
+dev k500_bpm_p2v4_5DT13 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v4.5DT13 k500_bpm_p2v4_5DT13
+dev k500_bpm_e2v2_4DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.4DT1 k500_bpm_e2v2_4DT1
+dev k500_bpm_e2v2_3DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.3DT1 k500_bpm_e2v2_3DT1
+dev k500_bpm_e2v2_5DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.5DT1 k500_bpm_e2v2_5DT1
+dev k500_bpm_e2v2_6PIC1 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC1 k500_bpm_e2v2_6PIC1
+dev k500_bpm_e2v2_6PIC2 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC2 k500_bpm_e2v2_6PIC2
+dev k500_bpm_e2v2_6PIC3 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC3 k500_bpm_e2v2_6PIC3
+dev k500_bpm_e2v2_6PIC4 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC4 k500_bpm_e2v2_6PIC4
+dev k500_bpm_e2v2_6PIC5 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC5 k500_bpm_e2v2_6PIC5
+dev k500_bpm_e2v2_6PIC6 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC6 k500_bpm_e2v2_6PIC6
+dev k500_bpm_e2v2_6PIC7 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC7 k500_bpm_e2v2_6PIC7
+dev k500_bpm_e2v2_6PIC8 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC8 k500_bpm_e2v2_6PIC8
+dev k500_bpm_e2v2_6PIC9 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC9 k500_bpm_e2v2_6PIC9
+dev k500_bpm_e2v2_6PIC10 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC10 k500_bpm_e2v2_6PIC10
+dev k500_bpm_e2v2_6PIC11 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC11 k500_bpm_e2v2_6PIC11
+dev k500_bpm_e2v2_6PIC12 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC12 k500_bpm_e2v2_6PIC12
+dev k500_bpm_e2v2_6PIC13 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC13 k500_bpm_e2v2_6PIC13
+dev k500_bpm_e2v2_6PIC14 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC14 k500_bpm_e2v2_6PIC14
+dev k500_bpm_e2v2_6PIC15 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC15 k500_bpm_e2v2_6PIC15
+dev k500_bpm_e2v2_6PIC16 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC16 k500_bpm_e2v2_6PIC16
+dev k500_bpm_e2v2_6PIC17 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC17 k500_bpm_e2v2_6PIC17
+dev k500_bpm_e2v2_6PIC18 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC18 k500_bpm_e2v2_6PIC18
+dev k500_bpm_e2v2_6PIC19 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC19 k500_bpm_e2v2_6PIC19
+dev k500_bpm_e2v2_6PIC20 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC20 k500_bpm_e2v2_6PIC20
+dev k500_bpm_e2v2_6PIC22 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC22 k500_bpm_e2v2_6PIC22
+dev k500_bpm_e2v2_6PIC23 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC23 k500_bpm_e2v2_6PIC23
+dev k500_bpm_e2v2_6PIC24 k500_bpm/noop ~ -
+cpoint k500.bpm.e2v2.6PIC24 k500_bpm_e2v2_6PIC24
+dev k500_bpm_p2v2_4DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.4DT1 k500_bpm_p2v2_4DT1
+dev k500_bpm_p2v2_3DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.3DT1 k500_bpm_p2v2_3DT1
+dev k500_bpm_p2v2_5DT1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.5DT1 k500_bpm_p2v2_5DT1
+dev k500_bpm_p2v2_6PIC1 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC1 k500_bpm_p2v2_6PIC1
+dev k500_bpm_p2v2_6PIC2 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC2 k500_bpm_p2v2_6PIC2
+dev k500_bpm_p2v2_6PIC3 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC3 k500_bpm_p2v2_6PIC3
+dev k500_bpm_p2v2_6PIC4 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC4 k500_bpm_p2v2_6PIC4
+dev k500_bpm_p2v2_6PIC5 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC5 k500_bpm_p2v2_6PIC5
+dev k500_bpm_p2v2_6PIC6 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC6 k500_bpm_p2v2_6PIC6
+dev k500_bpm_p2v2_6PIC7 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC7 k500_bpm_p2v2_6PIC7
+dev k500_bpm_p2v2_6PIC8 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC8 k500_bpm_p2v2_6PIC8
+dev k500_bpm_p2v2_6PIC9 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC9 k500_bpm_p2v2_6PIC9
+dev k500_bpm_p2v2_6PIC10 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC10 k500_bpm_p2v2_6PIC10
+dev k500_bpm_p2v2_6PIC11 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC11 k500_bpm_p2v2_6PIC11
+dev k500_bpm_p2v2_6PIC12 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC12 k500_bpm_p2v2_6PIC12
+dev k500_bpm_p2v2_6PIC13 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC13 k500_bpm_p2v2_6PIC13
+dev k500_bpm_p2v2_6PIC14 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC14 k500_bpm_p2v2_6PIC14
+dev k500_bpm_p2v2_6PIC15 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC15 k500_bpm_p2v2_6PIC15
+dev k500_bpm_p2v2_6PIC16 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC16 k500_bpm_p2v2_6PIC16
+dev k500_bpm_p2v2_6PIC17 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC17 k500_bpm_p2v2_6PIC17
+dev k500_bpm_p2v2_6PIC18 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC18 k500_bpm_p2v2_6PIC18
+dev k500_bpm_p2v2_6PIC19 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC19 k500_bpm_p2v2_6PIC19
+dev k500_bpm_p2v2_6PIC20 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC20 k500_bpm_p2v2_6PIC20
+dev k500_bpm_p2v2_6PIC22 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC22 k500_bpm_p2v2_6PIC22
+dev k500_bpm_p2v2_6PIC23 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC23 k500_bpm_p2v2_6PIC23
+dev k500_bpm_p2v2_6PIC24 k500_bpm/noop ~ -
+cpoint k500.bpm.p2v2.6PIC24 k500_bpm_p2v2_6PIC24

@@ -1,0 +1,64 @@
+devtype deamon_text w1t1024,w1t1024 {
+cmd 0
+res 1
+}
+
+devtype ADCCorrelProc w1d1,w1d1,w1i1,w1d1024,w1d1024,w1d1024,w1d1024,w1d1,w1d200,w1d1,w1d101,w1d101,w1d1,w1d101,w1d101,w1d101,w1d101,w1d101,w1d101,w1d1 {
+delta_a 0
+delta_t 1
+n_interp 2
+Ugood 3
+Tgood 4
+Ttemp 5
+Utemp 6
+sigma_cur 7
+delta_t_array 8
+t_peak 9
+histo_y_all 10
+histo_x_all 11
+histo_range 12
+histo_x_1 13
+histo_x_2 14
+histo_x_3 15
+histo_y_1 16
+histo_y_2 17
+histo_y_3 18
+abs_a_good 19
+}
+
+dev inj_kick_e_pos ADCCorrelProc/noop ~ -
+cpoint inj.kick.e.pos inj_kick_e_pos
+dev inj_kick_e_neg ADCCorrelProc/noop ~ -
+cpoint inj.kick.e.neg inj_kick_e_neg
+dev inj_kick_p_pos ADCCorrelProc/noop ~ -
+cpoint inj.kick.p.pos inj_kick_p_pos
+dev inj_kick_p_neg ADCCorrelProc/noop ~ -
+cpoint inj.kick.p.neg inj_kick_p_neg
+dev ext_kick_e_pos ADCCorrelProc/noop ~ -
+cpoint ext.kick.e.pos ext_kick_e_pos
+dev ext_kick_e_neg ADCCorrelProc/noop ~ -
+cpoint ext.kick.e.neg ext_kick_e_neg
+dev ext_kick_p_pos ADCCorrelProc/noop ~ -
+cpoint ext.kick.p.pos ext_kick_p_pos
+dev ext_kick_p_neg ADCCorrelProc/noop ~ -
+cpoint ext.kick.p.neg ext_kick_p_neg
+dev kickADCproc_inj deamon_text/noop ~ -
+cpoint kickADCproc.inj kickADCproc_inj
+dev inj_prekick_p_neg ADCCorrelProc/noop ~ -
+cpoint inj.prekick.p.neg inj_prekick_p_neg
+dev inj_prekick_p_pos ADCCorrelProc/noop ~ -
+cpoint inj.prekick.p.pos inj_prekick_p_pos
+dev inj_prekick_e_pos ADCCorrelProc/noop ~ -
+cpoint inj.prekick.e.pos inj_prekick_e_pos
+dev inj_prekick_e_neg ADCCorrelProc/noop ~ -
+cpoint inj.prekick.e.neg inj_prekick_e_neg
+dev ext_prekick_e_neg ADCCorrelProc/noop ~ -
+cpoint ext.prekick.e.neg ext_prekick_e_neg
+dev ext_prekick_e_pos ADCCorrelProc/noop ~ -
+cpoint ext.prekick.e.pos ext_prekick_e_pos
+dev ext_prekick_p_neg ADCCorrelProc/noop ~ -
+cpoint ext.prekick.p.neg ext_prekick_p_neg
+dev ext_prekick_p_pos ADCCorrelProc/noop ~ -
+cpoint ext.prekick.p.pos ext_prekick_p_pos
+dev kickADCproc_ext deamon_text/noop ~ -
+cpoint kickADCproc.ext kickADCproc_ext

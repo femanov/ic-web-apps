@@ -1,0 +1,122 @@
+devtype quadrupole_magnet w1i1,w1d1,w1d1,w1d1,w1d1 {
+fail 0
+Pmag 1
+Pcab 2
+Gset 3
+Gmeas 4
+}
+
+devtype bendmag_magnet w1i1,w1d1,w1d1,w1d1,w1d1,w1d1 {
+fail 0
+Pmag 1
+Pcab 2
+Bset 3
+Bmeas 4
+Ebeam 5
+}
+
+devtype bendmag w1d1,w1d1,w1d1 {
+Bset 0
+Bmeas 1
+Ebeam 2
+}
+
+devtype linbpm_proc w1d1,w1d1 {
+y 0
+x 1
+}
+
+devtype ADC200_extra w1i1,w1d1,w1d1024,w1i1,w1d1024,w1d1,w1d1024,w1d1024,w1d1024,w1d1024 {
+c1_nav 0
+c1_dt 1
+c1_Ua 2
+c2_Nav 3
+c1_Ubase 4
+c2_dt 5
+c2_U 6
+c2_Ua 7
+c2_Ubase 8
+c1_u 9
+}
+
+dev e2 linbpm_proc/noop ~ -
+dev p11 linbpm_proc/noop ~ -
+dev p10 linbpm_proc/noop ~ -
+dev p9 linbpm_proc/noop ~ -
+dev p6 linbpm_proc/noop ~ -
+dev eTrip linbpm_proc/noop ~ -
+dev eTech linbpm_proc/noop ~ -
+dev e5 linbpm_proc/noop ~ -
+dev e4 linbpm_proc/noop ~ -
+dev e3 linbpm_proc/noop ~ -
+dev e1 linbpm_proc/noop ~ -
+dev adc2 ADC200_extra/noop ~ -
+dev adc1 ADC200_extra/noop ~ -
+dev p14 linbpm_proc/noop ~ -
+dev p13 linbpm_proc/noop ~ -
+dev p12 linbpm_proc/noop ~ -
+dev QL1 quadrupole_magnet/noop ~ -
+dev QL2 quadrupole_magnet/noop ~ -
+dev QL3 quadrupole_magnet/noop ~ -
+dev QL4 quadrupole_magnet/noop ~ -
+dev QL5 quadrupole_magnet/noop ~ -
+dev QL6n7 quadrupole_magnet/noop ~ -
+dev QL8n9 quadrupole_magnet/noop ~ -
+dev QL10 quadrupole_magnet/noop ~ -
+dev QL11 quadrupole_magnet/noop ~ -
+dev QL12 quadrupole_magnet/noop ~ -
+dev QL13 quadrupole_magnet/noop ~ -
+dev QL14 quadrupole_magnet/noop ~ -
+dev QLB1 quadrupole_magnet/noop ~ -
+dev bend bendmag_magnet/noop ~ -
+dev QLB2n5 quadrupole_magnet/noop ~ -
+dev QLB3n4 quadrupole_magnet/noop ~ -
+dev QLtr1 quadrupole_magnet/noop ~ -
+dev QLtr2 quadrupole_magnet/noop ~ -
+dev QLtr3 quadrupole_magnet/noop ~ -
+dev QL15 quadrupole_magnet/noop ~ -
+dev QLN quadrupole_magnet/noop ~ -
+dev QL16 quadrupole_magnet/noop ~ -
+dev QL17 quadrupole_magnet/noop ~ -
+dev QL18 quadrupole_magnet/noop ~ -
+dev QL19 quadrupole_magnet/noop ~ -
+dev QL20 quadrupole_magnet/noop ~ -
+dev QL21 quadrupole_magnet/noop ~ -
+dev QL22 quadrupole_magnet/noop ~ -
+dev QL23 quadrupole_magnet/noop ~ -
+dev QL24 quadrupole_magnet/noop ~ -
+dev QL25 quadrupole_magnet/noop ~ -
+dev QL26 quadrupole_magnet/noop ~ -
+dev QL27 quadrupole_magnet/noop ~ -
+dev QL28 quadrupole_magnet/noop ~ -
+dev QL29 quadrupole_magnet/noop ~ -
+dev QL30 quadrupole_magnet/noop ~ -
+dev QL31 quadrupole_magnet/noop ~ -
+dev q2l1 quadrupole_magnet/noop ~ -
+dev q2l2 quadrupole_magnet/noop ~ -
+dev q2l3 quadrupole_magnet/noop ~ -
+dev q2l4 quadrupole_magnet/noop ~ -
+dev d1m5t7 bendmag_magnet/noop ~ -
+dev q2l5 quadrupole_magnet/noop ~ -
+dev q1l0 quadrupole_magnet/noop ~ -
+dev q1L1 quadrupole_magnet/noop ~ -
+dev d1m bendmag_magnet/noop ~ -
+dev q1l2n6 quadrupole_magnet/noop ~ -
+dev q1L3n5 quadrupole_magnet/noop ~ -
+dev q1l4n8 quadrupole_magnet/noop ~ -
+dev q1l7n9 quadrupole_magnet/noop ~ -
+dev q1l10 quadrupole_magnet/noop ~ -
+dev q1l11 quadrupole_magnet/noop ~ -
+dev drm bendmag_magnet/noop ~ -
+dev qd1 quadrupole_magnet/noop ~ -
+dev qf1n2 quadrupole_magnet/noop ~ -
+dev qd2 quadrupole_magnet/noop ~ -
+dev qd3 quadrupole_magnet/noop ~ -
+dev qf3 quadrupole_magnet/noop ~ -
+dev qf4 quadrupole_magnet/noop ~ -
+dev d3m1t3 bendmag_magnet/noop ~ -
+dev d4m1t3 bendmag_magnet/noop ~ -
+dev d4m4n5 bendmag/noop ~ -
+dev d3m4n5 bendmag_magnet/noop ~ -
+dev d5M1t4 bendmag_magnet/noop ~ -
+dev d6M1t4 bendmag_magnet/noop ~ -

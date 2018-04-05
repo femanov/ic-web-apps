@@ -1,0 +1,26 @@
+
+
+devtype vepp3dt w6d1,w1t4 {
+Ibeam 0
+Isep1 1
+Isep2 2
+Emag 3
+polarity 4
+status 5
+mode 6
+}
+
+devtype vepp4dt w7d1,w1t4 {
+Ibeam  0
+Ieleb1 1
+Ieleb2 2
+Iposb1 3
+Iposb2 4
+Emag  5
+polarity 6
+status 7
+mode   8
+}
+
+dev vepp3 vepp3dt/noop ~ -
+dev vepp4 vepp4dt/noop ~ -

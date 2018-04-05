@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cxsd -b 100000 -c ./test-config.conf -f ./soft_pobox.devlist :0

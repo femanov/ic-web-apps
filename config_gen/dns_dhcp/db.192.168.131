@@ -1,0 +1,26 @@
+$TTL 604800
+@ IN SOA ic.local. emanov.inp.nsk.su. (66; serial
+604800    ; Refresh
+86400      ; Retry
+2419200 ;  Expire
+604800   ;  Negative Cache TTL
+);
+
+; name servers - NS records
+ IN NS name0.ic.local.
+ IN NS name1.ic.local.
+
+
+; PTR records
+10 IN PTR v5-syn.ic.local.
+11 IN PTR v5-gun.ic.local.
+13 IN PTR v5-phr.ic.local.
+21 IN PTR v5-sr-kls.ic.local.
+23 IN PTR v5-sr-rfr.ic.local.
+24 IN PTR v5-sr-ie.ic.local.
+40 IN PTR v5-l-cnv.ic.local.
+41 IN PTR v5-l-kls1.ic.local.
+42 IN PTR v5-l-kls2.ic.local.
+43 IN PTR v5-l-kls3.ic.local.
+44 IN PTR v5-l-kls4.ic.local.
+122 IN PTR moxa-2.ic.local.

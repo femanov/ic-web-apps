@@ -1,0 +1,30 @@
+zone "168.192.in-addr.arpa" {
+   type forward;
+   forwarders {192.168.167.15;192.168.167.30;};
+};
+
+zone "inp.nsk.su" {
+    type forward;
+    forwarders {192.168.167.15;192.168.167.30;};
+};
+
+zone "ic.local" {
+   type master;
+   file "/etc/named/zones/db.ic.local";
+};
+
+zone "2.168.192.in-addr.arpa" {
+   type master;
+   file "/etc/named/zones/db.192.168.2";
+};
+
+zone "6.168.192.in-addr.arpa" {
+   type master;
+   file "/etc/named/zones/db.192.168.6";
+};
+
+zone "8.168.192.in-addr.arpa" {
+   type master;
+   file "/etc/named/zones/db.192.168.8";
+};
+

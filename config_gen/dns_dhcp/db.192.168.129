@@ -1,0 +1,45 @@
+$TTL 604800
+@ IN SOA ic.local. emanov.inp.nsk.su. (66; serial
+604800    ; Refresh
+86400      ; Retry
+2419200 ;  Expire
+604800   ;  Negative Cache TTL
+);
+
+; name servers - NS records
+ IN NS name0.ic.local.
+ IN NS name1.ic.local.
+
+
+; PTR records
+2 IN PTR name0.ic.local.
+3 IN PTR name1.ic.local.
+4 IN PTR duct.ic.local.
+5 IN PTR ipa.ic.local.
+6 IN PTR iscsi-server.ic.local.
+32 IN PTR ap-pult.ic.local.
+33 IN PTR ap-k500-entrance.ic.local.
+34 IN PTR ap-k500-3.ic.local.
+35 IN PTR ap-k500-6pic9.ic.local.
+36 IN PTR wifi-ctr.ic.local.
+37 IN PTR ap-pult-1.ic.local.
+40 IN PTR camera.ic.local.
+60 IN PTR karpov-nb.ic.local.
+62 IN PTR bigtube.ic.local.
+63 IN PTR printer.ic.local.
+64 IN PTR v5p1.ic.local.
+65 IN PTR v5p2.ic.local.
+66 IN PTR v5p3.ic.local.
+67 IN PTR v5p4.ic.local.
+68 IN PTR linac3.ic.local.
+85 IN PTR rpi1.ic.local.
+86 IN PTR rpi2.ic.local.
+93 IN PTR term-mrn.ic.local.
+100 IN PTR graph.ic.local.
+101 IN PTR xuba.ic.local.
+102 IN PTR warp.ic.local.
+191 IN PTR foxy-eth3.ic.local.
+192 IN PTR canhw-future.ic.local.
+193 IN PTR cxhw.ic.local.
+253 IN PTR epics-gw.ic.local.
+254 IN PTR ctlhomes.ic.local.

@@ -1,0 +1,24 @@
+
+zone "ic.local" {
+   type slave;
+   file "slaves/db.ic.local";
+   masters {192.168.129.2; };
+};
+
+zone "2.168.192.in-addr.arpa" {
+    type slave;
+    file "slaves/db.192.168.2";
+    masters {192.168.129.2; };
+ };
+
+zone "6.168.192.in-addr.arpa" {
+   type slave;
+   file "slaves/db.192.168.6";
+   masters {192.168.129.3; };
+};
+
+zone "8.168.192.in-addr.arpa" {
+    type slave;
+    file "slaves/db.192.168.8";
+    masters {192.168.129.3; };
+};
