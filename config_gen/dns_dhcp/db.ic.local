@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (66; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (67; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -159,3 +159,5 @@ wifi-ctr IN A 192.168.129.36
 ap-pult-1 IN A 192.168.129.37
 warp IN A 192.168.129.102
 term-mrn IN A 192.168.129.93
+nb-pisarev IN A 192.168.129.59
+nb-pisarev-w IN A 192.168.129.58

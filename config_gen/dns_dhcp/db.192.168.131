@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (66; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (67; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire

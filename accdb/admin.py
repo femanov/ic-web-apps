@@ -27,7 +27,7 @@ class SysAdmin(admin.ModelAdmin):
     filter_horizontal = ('devs',)
 
 
-class SysTestMPAdmin(TreeAdmin):
+class SysMPAdmin(TreeAdmin):
     form = movenodeform_factory(SysMP)
     filter_horizontal = ('devs',)
 
@@ -81,7 +81,7 @@ class FullChanAdmin(admin.ModelAdmin):
 admin.site.register(Mode, ModeAdmin)
 admin.site.register(ModeData, ModeDataAdmin)
 admin.site.register(Sys, SysAdmin)
-admin.site.register(SysMP, SysTestMPAdmin)
+admin.site.register(SysMP, SysMPAdmin)
 
 admin.site.register(Dev, DevAdmin)
 admin.site.register(Devtype, DevtypeAdmin)

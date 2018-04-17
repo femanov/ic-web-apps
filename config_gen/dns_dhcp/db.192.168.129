@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (66; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (67; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -24,6 +24,8 @@ $TTL 604800
 36 IN PTR wifi-ctr.ic.local.
 37 IN PTR ap-pult-1.ic.local.
 40 IN PTR camera.ic.local.
+58 IN PTR nb-pisarev-w.ic.local.
+59 IN PTR nb-pisarev.ic.local.
 60 IN PTR karpov-nb.ic.local.
 62 IN PTR bigtube.ic.local.
 63 IN PTR printer.ic.local.
