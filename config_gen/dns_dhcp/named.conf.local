@@ -1,5 +1,5 @@
 zone "ic.local" { type master; file "/etc/named/zones/db.ic.local"; };
 zone "130.168.192.in-addr.arpa" {type master;file "/etc/named/zones/db.192.168.130";};
+zone "131.168.192.in-addr.arpa" {type master;file "/etc/named/zones/db.192.168.131";};
 zone "129.168.192.in-addr.arpa" {type master;file "/etc/named/zones/db.192.168.129";};
 zone "128.168.192.in-addr.arpa" {type master;file "/etc/named/zones/db.192.168.128";};
-zone "131.168.192.in-addr.arpa" {type master;file "/etc/named/zones/db.192.168.131";};

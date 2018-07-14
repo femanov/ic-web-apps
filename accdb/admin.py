@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Sys, Dev, Devtype, Namesys, Chan, Mode, ModeData, DevTree, DevTreeItem, DevMeta, FullChan
+from .models import Sys, Dev, Devtype, Namesys, Chan, Mode, ModeData, DevTree, DevTreeItem, MetaData, FullChan
 
 from .models import SysMP
 from treebeard.admin import TreeAdmin
@@ -19,7 +19,7 @@ class DevtypeForm(forms.ModelForm):
 class DevtypeAdmin(admin.ModelAdmin):
     #form = DevtypeForm
     search_fields = ['name', 'description']
-    filter_horizontal = ('chans',)
+    filter_horizontal = ('chans', 'metadata')
 
 
 class SysAdmin(admin.ModelAdmin):
@@ -41,12 +41,12 @@ class DevAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count')
     list_filter = ['enabled', 'sys', 'namesys', 'devtype']
     search_fields = ['label', 'name', 'description']
-    filter_horizontal = ('devtype', 'devmeta')
+    filter_horizontal = ('devtype', 'metadata')
 
 
 class ChanAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'access', 'units',
-                    'dtype', 'dsize', 'protocol', 'ord', 'handle')
+                    'dtype', 'dsize', 'protocol', 'ord', 'savable',)
     list_filter = ['protocol']
     search_fields = ['label', 'name']
 
@@ -68,7 +68,7 @@ class DevTreeItemAdmin(admin.ModelAdmin):
     list_display = ('devtree', 'dev', 'parent')
 
 
-class DevMetaAdmin(admin.ModelAdmin):
+class MetaDataAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
@@ -89,5 +89,5 @@ admin.site.register(Namesys, NamesysAdmin)
 admin.site.register(Chan, ChanAdmin)
 admin.site.register(DevTree, DevTreeAdmin)
 admin.site.register(DevTreeItem, DevTreeItemAdmin)
-admin.site.register(DevMeta, DevMetaAdmin)
+admin.site.register(MetaData, MetaDataAdmin)
 admin.site.register(FullChan, FullChanAdmin)

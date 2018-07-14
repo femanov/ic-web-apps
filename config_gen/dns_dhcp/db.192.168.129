@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (67; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (76; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -17,6 +17,9 @@ $TTL 604800
 4 IN PTR duct.ic.local.
 5 IN PTR ipa.ic.local.
 6 IN PTR iscsi-server.ic.local.
+7 IN PTR nfs-overlayfs.ic.local.
+8 IN PTR base-pult.ic.local.
+9 IN PTR web.ic.local.
 32 IN PTR ap-pult.ic.local.
 33 IN PTR ap-k500-entrance.ic.local.
 34 IN PTR ap-k500-3.ic.local.
@@ -26,7 +29,7 @@ $TTL 604800
 40 IN PTR camera.ic.local.
 58 IN PTR nb-pisarev-w.ic.local.
 59 IN PTR nb-pisarev.ic.local.
-60 IN PTR karpov-nb.ic.local.
+60 IN PTR nb-karpov.ic.local.
 62 IN PTR bigtube.ic.local.
 63 IN PTR printer.ic.local.
 64 IN PTR v5p1.ic.local.
@@ -40,8 +43,10 @@ $TTL 604800
 100 IN PTR graph.ic.local.
 101 IN PTR xuba.ic.local.
 102 IN PTR warp.ic.local.
+103 IN PTR xuba-next.ic.local.
 191 IN PTR foxy-eth3.ic.local.
 192 IN PTR canhw-future.ic.local.
 193 IN PTR cxhw.ic.local.
+194 IN PTR pg10-srv.ic.local.
 253 IN PTR epics-gw.ic.local.
 254 IN PTR ctlhomes.ic.local.

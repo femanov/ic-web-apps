@@ -1,6 +1,7 @@
 from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.db.models import Count
+from django.contrib.postgres.fields import ArrayField
 from treebeard.al_tree import AL_Node
 from treebeard.mp_tree import MP_Node
 
@@ -21,15 +22,14 @@ class Namesys(models.Model):
 
 class Chan(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
-    access = models.CharField(max_length=10)
+    access = models.CharField(max_length=10, default='r')
     units = models.CharField(max_length=100, blank=True, default='')
     protocol = models.CharField(max_length=100)
     label = models.CharField(max_length=100, blank=True, default='')
     dtype = models.CharField(max_length=100, blank=True, default='')
     dsize = models.IntegerField(default=1)
     ord = models.IntegerField(default=1)
-    handle = models.CharField(max_length=1000, default='double')
-    saveble = models.IntegerField(default=1)
+    savable = models.BooleanField(default=True)
 
     def __str__(self):
         return self.label
@@ -39,11 +39,23 @@ class Chan(models.Model):
         ordering = ['label', 'name', ]
 
 
+class MetaData(models.Model):
+    name = models.CharField(max_length=100)
+    data = JSONField(default=dict())
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'metadata'
+
+
 class Devtype(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1024, blank=True, default='')
     soft = models.IntegerField(default=0)
     chans = models.ManyToManyField(Chan, blank=True)
+    metadata = models.ManyToManyField(MetaData, blank=True)
 
     def __str__(self):
         return self.name
@@ -53,20 +65,9 @@ class Devtype(models.Model):
         ordering = ['name', ]
 
 
-class DevMeta(models.Model):
-    name = models.CharField(max_length=100)
-    data = JSONField(default=dict())
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'devmeta'
-    
-
 class DevManager(models.Manager):
     def get_queryset(self):
-        return super(DevManager, self).get_queryset().annotate(metacount=Count('devmeta'))
+        return super(DevManager, self).get_queryset().annotate(metacount=Count('metadata'))
 
 
 class Dev(models.Model):
@@ -75,9 +76,9 @@ class Dev(models.Model):
     description = models.CharField(max_length=1024, blank=True, default='')
     namesys = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
     devtype = models.ManyToManyField(Devtype)
-    enabled = models.IntegerField(default=1)
+    enabled = models.BooleanField(default=True)
     ord = models.IntegerField(default=0)
-    devmeta = models.ManyToManyField(DevMeta, blank=True)
+    metadata = models.ManyToManyField(MetaData, blank=True)
     objects = DevManager()
 
     def meta_count(self):
@@ -132,12 +133,15 @@ class SysMP(MP_Node):
 
 
 class FullChan(models.Model):
-    protocol = models.CharField(max_length=1024, default='')
+    protocol = models.CharField(max_length=50, default='')
     chan_name = models.CharField(max_length=1024, default='')
+    cur_chan_name = models.CharField(max_length=1024, default='')
+    access = models.CharField(max_length=10, default='')
     namesys_id = models.IntegerField(default=0)
     dev_id = models.IntegerField(default=0)
     chan_id = models.IntegerField(default=0)
-    is_current = models.IntegerField(default=0)
+    is_current = models.BooleanField(default=False)
+    systems = ArrayField(models.IntegerField(), default=[])
 
     class Meta:
         db_table = 'fullchan'
@@ -145,9 +149,9 @@ class FullChan(models.Model):
 
 class Mode(models.Model):
     comment = models.CharField(max_length=1024)
-    author = models.CharField(max_length=100, default='')
+    author = models.CharField(max_length=50, default='')
     stime = models.DateTimeField(auto_now_add=True)
-    archived = models.IntegerField(default=0)
+    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return self.comment
@@ -160,7 +164,7 @@ class ModeData(models.Model):
     mode = models.ForeignKey(Mode, on_delete=models.CASCADE)
     utime = models.BigIntegerField()
     value = models.FloatField(default=0)
-    available = models.IntegerField(default=0)
+    available = models.BooleanField(default=False)
     fullchan = models.ForeignKey(FullChan, on_delete=models.SET_DEFAULT, default=1)
 
 

@@ -1,3 +1,15 @@
+devtype DissectorProc w1d65535,w1d65535,w1d1,w1d1,w1d65535,w1d1,w1d1,w1t1024,w1t1024 {
+resample_data 0
+fit_data 1
+fit_sigma 2
+fit_t0 3
+time_fit_data 4
+fit_a 5
+make_model_fit 6
+err_mess 7
+fit_switch 8
+}
+
 devtype deamon_text w1t1024,w1t1024 {
 cmd 0
 res 1
@@ -26,6 +38,7 @@ histo_y_3 18
 abs_a_good 19
 }
 
+dev e_diss DissectorProc/noop ~ -
 dev inj_kick_e_pos ADCCorrelProc/noop ~ -
 cpoint inj.kick.e.pos inj_kick_e_pos
 dev inj_kick_e_neg ADCCorrelProc/noop ~ -

@@ -1,3 +1,11 @@
+devtype kls5045_cx w1d1,w1d1,w1d1,w1d1,w1d1 {
+phase.set 0
+HV.set 1
+cry_on_ilks 2
+phase.rbv 3
+amp_gain.set 4
+}
+
 devtype quadrupole_magnet w1i1,w1d1,w1d1,w1d1,w1d1 {
 fail 0
 Pmag 1
@@ -39,6 +47,10 @@ c2_Ubase 8
 c1_u 9
 }
 
+dev kls1 kls5045_cx/noop ~ -
+dev kls2 kls5045_cx/noop ~ -
+dev kls3 kls5045_cx/noop ~ -
+dev kls4 kls5045_cx/noop ~ -
 dev e2 linbpm_proc/noop ~ -
 dev p11 linbpm_proc/noop ~ -
 dev p10 linbpm_proc/noop ~ -

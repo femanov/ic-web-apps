@@ -19,6 +19,16 @@ u2i 7
 life_fitlength 8
 }
 
+devtype controls_info w1d1,w1t1024,w1t1024 {
+Emag 0
+crew_cheaf 1
+agenda 2
+}
+
+devtype sounddt w1t100 {
+filename 0
+}
+
 devtype k500ctl w1i1,w1i1,w1t1024,w1t4 {
 mode 0
 ready 1
@@ -81,15 +91,6 @@ Etoday 16
 Elastday 17
 }
 
-devtype DissectorProc w1d65535,w1d65535,w1d1,w1d1,w1d65535,w1d1 {
-resample_data 0
-fit_data 1
-fit_sigma 2
-fit_t0 3
-time_fit_data 4
-fit_a 5
-}
-
 devtype bep_info w1i1,w1t10,w1i1,w1t20,w1t1024,w1d1,w1d1,w1d1 {
 polarity 0
 polarityt 1
@@ -106,16 +107,6 @@ request 0
 answer 1
 }
 
-devtype controls_info w1d1,w1t1024,w1t1024 {
-Emag 0
-crew_cheaf 1
-agenda 2
-}
-
-devtype sounddt w1t100 {
-filename 0
-}
-
 dev ddm ddm/noop ~ -
 dev dcct beam_dcct/noop ~ -
 dev modeswitcher modeswitcher/noop ~ -
@@ -123,7 +114,6 @@ dev modectl deamon_text/noop ~ -
 dev info controls_info/noop ~ -
 dev sounddev sounddt/noop ~ -
 dev pwa1 pwa/noop ~ -
-dev e_diss DissectorProc/noop ~ -
 dev k500 k500ctl/noop ~ -
 dev bep bep_info/noop ~ -
 dev vepp2k_info vepp2k_info/noop ~ -

@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accdb',
-    'netdb',
     'treebeard',
+    'accdb',
+    'accmode',
+    'netdb',
 ]
 
 MIDDLEWARE = [
@@ -89,31 +90,39 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django',
-        'URES': 'femanov',
+        'URES': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'pg10-srv',
         'PORT': '5432',
     },
     'icdata': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'icdata',
-        'URES': 'femanov',
+        'URES': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'pg10-srv',
+        'PORT': '5432',
+    },
+    'accmode': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'accmode',
+        'URES': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'pg10-srv',
         'PORT': '5432',
     },
     'netdata': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netdata',
-        'URES': 'femanov',
+        'URES': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'pg10-srv',
         'PORT': '5432',
-    }
-
+    },
 }
 
 DATABASE_ROUTERS = ['db_routers.router.AccdbRouter',
+                    'db_routers.router.AccmodeRouter',
                     'db_routers.router.NetdbRouter',
                     'db_routers.router.DjangoRouter']
 

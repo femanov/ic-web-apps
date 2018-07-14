@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (67; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (76; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -87,7 +87,6 @@ linbpm-p14 IN A 192.168.130.141
 linac3 IN A 192.168.129.68
 ap-pult IN A 192.168.129.32
 ups5k-2 IN A 192.168.128.129
-karpov-nb IN A 192.168.129.60
 rpi1 IN A 192.168.129.85
 rpi2 IN A 192.168.129.86
 ap-k500-entrance IN A 192.168.129.33
@@ -99,8 +98,6 @@ linbpm-e4 IN A 192.168.130.131
 linbpm-e5 IN A 192.168.130.132
 graph IN A 192.168.129.100
 ichw1-2 IN A 192.168.129.100
-v5p1 IN A 192.168.129.64
-MCR IN A 192.168.129.64
 ard-5pl2 IN A 192.168.130.192
 ipa IN A 192.168.129.5
 cangw-dissector IN A 192.168.130.68
@@ -119,6 +116,9 @@ ard-6tv-7 IN A 192.168.130.207
 ard-6tv-8 IN A 192.168.130.208
 ard-6tv-9 IN A 192.168.130.209
 cansrv2-ipmi IN A 192.168.128.67
+v5p1 IN A 192.168.129.64
+MCR IN A 192.168.129.64
+nb-karpov IN A 192.168.129.60
 ard-6tv-10 IN A 192.168.130.210
 ard-6tv-11 IN A 192.168.130.211
 ard-test IN A 192.168.130.222
@@ -133,7 +133,6 @@ ichw2-2 IN A 192.168.129.101
 cxhw IN A 192.168.129.193
 canhw IN A 192.168.129.193
 storage-ipmi IN A 192.168.128.68
-v5p2 IN A 192.168.129.65
 v5p4 IN A 192.168.129.67
 ups5k-1 IN A 192.168.128.128
 infra2-ipmi IN A 192.168.128.70
@@ -151,7 +150,6 @@ firewall1 IN A 192.168.128.98
 firewall2 IN A 192.168.128.99
 hw1 IN A 192.168.128.102
 hw2 IN A 192.168.128.103
-canhw-future IN A 192.168.129.192
 cansrv1-ipmi IN A 192.168.128.66
 cansrv1 IN A 192.168.128.100
 cansrv2 IN A 192.168.128.101
@@ -161,3 +159,13 @@ warp IN A 192.168.129.102
 term-mrn IN A 192.168.129.93
 nb-pisarev IN A 192.168.129.59
 nb-pisarev-w IN A 192.168.129.58
+v5p2 IN A 192.168.129.65
+v5p2-ipmi IN A 192.168.128.74
+canhw-future IN A 192.168.129.192
+nfs-overlayfs IN A 192.168.129.7
+base-pult IN A 192.168.129.8
+web IN A 192.168.129.9
+pg10-srv IN A 192.168.129.194
+v5p1-ipmi IN A 192.168.128.73
+xuba-next IN A 192.168.129.103
+v5p3-ipmi IN A 192.168.128.75
