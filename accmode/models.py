@@ -15,6 +15,7 @@ class FullChan(models.Model):
 
     class Meta:
         db_table = 'fullchan'
+        unique_together = (("chan_name", "namesys_id", "dev_id", "chan_id"),)
 
 
 class Mode(models.Model):

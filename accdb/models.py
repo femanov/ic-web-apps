@@ -10,7 +10,8 @@ from treebeard.mp_tree import MP_Node
 class Namesys(models.Model):
     name = models.CharField(max_length=300)
     label = models.CharField(max_length=100)
-    soft = models.IntegerField(default=0)
+    soft = models.BooleanField(default=False)
+    def_soft = models.BooleanField(default=False)
 
     def __str__(self):
         return self.label
@@ -53,7 +54,7 @@ class MetaData(models.Model):
 class Devtype(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1024, blank=True, default='')
-    soft = models.IntegerField(default=0)
+    soft = models.BooleanField(default=False)
     chans = models.ManyToManyField(Chan, blank=True)
     metadata = models.ManyToManyField(MetaData, blank=True)
 
@@ -119,7 +120,7 @@ class Sys(models.Model):
 
 class SysMP(MP_Node):
     node_order_by = ['ord']
-    ord = models.IntegerField(default=0)
+    ord = models.IntegerField()
     name = models.CharField(max_length=100, default='')
     label = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=1024, default='', blank=True, null=True)
@@ -131,58 +132,6 @@ class SysMP(MP_Node):
     class Meta:
         db_table = 'sys_mp'
 
-
-class FullChan(models.Model):
-    protocol = models.CharField(max_length=50, default='')
-    chan_name = models.CharField(max_length=1024, default='')
-    cur_chan_name = models.CharField(max_length=1024, default='')
-    access = models.CharField(max_length=10, default='')
-    namesys_id = models.IntegerField(default=0)
-    dev_id = models.IntegerField(default=0)
-    chan_id = models.IntegerField(default=0)
-    is_current = models.BooleanField(default=False)
-    systems = ArrayField(models.IntegerField(), default=[])
-
-    class Meta:
-        db_table = 'fullchan'
-
-
-class Mode(models.Model):
-    comment = models.CharField(max_length=1024)
-    author = models.CharField(max_length=50, default='')
-    stime = models.DateTimeField(auto_now_add=True)
-    archived = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.comment
-
-    class Meta:
-        db_table = 'mode'
-
-
-class ModeData(models.Model):
-    mode = models.ForeignKey(Mode, on_delete=models.CASCADE)
-    utime = models.BigIntegerField()
-    value = models.FloatField(default=0)
-    available = models.BooleanField(default=False)
-    fullchan = models.ForeignKey(FullChan, on_delete=models.SET_DEFAULT, default=1)
-
-
-    def __str__(self):
-        return str(self.mode) + " : " + str(self.fullchan)
-
-    class Meta:
-        db_table = 'modedata'
-
-
-class ModeMark(models.Model):
-    mode = models.ForeignKey(Mode, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=100)
-    comment = models.CharField(max_length=1024)
-    author = models.CharField(max_length=100, default='')
-
-    class Meta:
-        db_table = 'modemark'
 
 
 # some data about device hierarchic structures like

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Sys, Dev, Devtype, Namesys, Chan, Mode, ModeData, DevTree, DevTreeItem, MetaData, FullChan
+from .models import Sys, Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData
 
 from .models import SysMP
 from treebeard.admin import TreeAdmin
@@ -33,12 +33,12 @@ class SysMPAdmin(TreeAdmin):
 
 
 class NamesysAdmin(admin.ModelAdmin):
-    list_display = ('label', 'name', 'soft')
+    list_display = ('label', 'name', 'soft', 'def_soft')
     search_fields = ['label', 'name']
 
 
 class DevAdmin(admin.ModelAdmin):
-    list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count')
+    list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled')
     list_filter = ['enabled', 'sys', 'namesys', 'devtype']
     search_fields = ['label', 'name', 'description']
     filter_horizontal = ('devtype', 'metadata')
@@ -50,14 +50,6 @@ class ChanAdmin(admin.ModelAdmin):
     list_filter = ['protocol']
     search_fields = ['label', 'name']
 
-
-class ModeAdmin(admin.ModelAdmin):
-    list_display = ('comment', 'stime')
-
-
-class ModeDataAdmin(admin.ModelAdmin):
-    list_display = ('fullchan', 'mode', 'utime', 'value', 'available')
-    search_fields = ['fullchan']
 
 
 class DevTreeAdmin(admin.ModelAdmin):
@@ -72,14 +64,6 @@ class MetaDataAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
-class FullChanAdmin(admin.ModelAdmin):
-    list_display = ('chan_name', 'is_current')
-    search_fields = ['chan_name']
-
-
-
-admin.site.register(Mode, ModeAdmin)
-admin.site.register(ModeData, ModeDataAdmin)
 admin.site.register(Sys, SysAdmin)
 admin.site.register(SysMP, SysMPAdmin)
 
@@ -90,4 +74,3 @@ admin.site.register(Chan, ChanAdmin)
 admin.site.register(DevTree, DevTreeAdmin)
 admin.site.register(DevTreeItem, DevTreeItemAdmin)
 admin.site.register(MetaData, MetaDataAdmin)
-admin.site.register(FullChan, FullChanAdmin)
