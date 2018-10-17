@@ -90,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django',
-        'URES': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'pg10-srv',
         'PORT': '5432',
@@ -98,7 +98,7 @@ DATABASES = {
     'icdata': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'icdata',
-        'URES': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'pg10-srv',
         'PORT': '5432',
@@ -106,7 +106,7 @@ DATABASES = {
     'accmode': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'accmode',
-        'URES': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'pg10-srv',
         'PORT': '5432',
@@ -114,7 +114,7 @@ DATABASES = {
     'netdata': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netdata',
-        'URES': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': 'pg10-srv',
         'PORT': '5432',
