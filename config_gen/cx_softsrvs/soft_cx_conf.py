@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from acc_db.db import *
+from settings.db import acc_cfg
 
 dtypes = {
     'int8':   'b',
@@ -15,10 +16,9 @@ dtypes = {
     '':       'd',
 }
 
-ext_srv = 'cxhw:1'
+db = AccConfig(**acc_cfg)
 
 
-db = acc_db()
 
 # software servers located at ichw1-2,
 # 0 - server for automatic control software
@@ -27,28 +27,34 @@ db = acc_db()
 
 # in a DB level 'soft' is int field of devtype, if it's > 0 - it is a software devtype
 
+# get default extension server from DB
+
+db.execute('select id, name from namesys where soft and def_soft limit 1')
+ext_srv = db.cur.fetchall()
+
+print('extension devises server:', ext_srv)
+
 # select servers from DB
-db.execute('select id, name from namesys where soft=1')
+
+db.execute('select id, name from namesys where soft order by name')
 srvs = db.cur.fetchall()
-db.conn.commit()
 
 for srv in srvs:
     print(srv)
-    db.execute('select distinct dts from (select dev_devtype.dev_id, array_agg(devtype.id order by devtype.id) as dts'
-        ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft>0'
-        ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft>0 and namesys.id=%s'
-        ' group by dev_devtype.dev_id) as t1', (srv[0],))
+    db.execute('select distinct array_agg(devtype.id) '
+               ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
+               ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft and namesys.id=%s'
+               ' group by dev_devtype.dev_id', (srv[0],))
     dts = db.cur.fetchall()
-    if srv[1] == ext_srv:
+    if srv == ext_srv:
         db.execute(
-            'select distinct dts from (select dev_devtype.dev_id, array_agg(devtype.id order by devtype.id) as dts'
-            ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft>0'
-            ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft=0'
-            ' group by dev_devtype.dev_id) as t1')
+            'select distinct array_agg(devtype.id)'
+            ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
+            ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and not namesys.soft'
+            ' group by dev_devtype.dev_id')
         exts = db.cur.fetchall()
         dts = dts + exts
     dts = [x[0] for x in dts]
-    db.conn.commit()
     print(dts)
 
     conf_file = open('devlist-' + srv[1].replace(':', '-') + '.lst', 'w')
@@ -80,14 +86,15 @@ for srv in srvs:
 
     db.execute('select dev.id,dev.name,array_agg(devtype.id order by devtype.id)'
                ' from dev_devtype,devtype,dev,namesys where dev.id=dev_devtype.dev_id and dev_devtype.devtype_id=devtype.id'
-               ' and devtype.soft>0 and dev.namesys_id=namesys.id and namesys.id=%s'
+               ' and devtype.soft and dev.namesys_id=namesys.id and namesys.id=%s'
                ' group by dev.id order by dev.ord', (srv[0],))
     devs = db.cur.fetchall()
 
-    if srv[1] == ext_srv:
+    if srv == ext_srv:
+        print('adding extension')
         db.execute('select dev.id,dev.name,array_agg(devtype.id order by devtype.id)'
                    ' from dev_devtype,devtype,dev,namesys where dev.id=dev_devtype.dev_id and dev_devtype.devtype_id=devtype.id'
-                   ' and devtype.soft>0 and dev.namesys_id=namesys.id and namesys.soft=0'
+                   ' and devtype.soft and dev.namesys_id=namesys.id and not namesys.soft'
                    ' group by dev.id order by dev.ord')
         devs = devs + db.cur.fetchall()
 

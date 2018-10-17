@@ -1,10 +1,27 @@
-devtype deamon_text w1t1024,w1t1024 {
-cmd 0
-res 1
-}
-
-devtype modeswitcher w1i1 {
-mode 0
+devtype ddm w1b1,w1i1,w1i1,w1i1,w1i1,w1i1,w1i1,w1i1,w1d1,w1i1,w1i1,w1t1000,w1b1,w1b1,w1i1,w1b1,w1b1,w1d1,w1i1,w1i1,w1d1,w1d1,w1i1 {
+icrunmode 0
+linrunmode 1
+nshots 2
+clockSrc 3
+eshots 4
+modedelay 5
+particles 6
+pshots 7
+injected 8
+injecting 9
+preparing2inject 10
+stateMsg 11
+autorun 12
+extract 13
+linrun 14
+stop 15
+nround 16
+extracted 17
+extracting 18
+preparing2extract 19
+extbeamcurrent 20
+lowbeamcurrent 21
+state 22
 }
 
 devtype beam_dcct w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1i1,w1d1,w1i1 {
@@ -19,6 +36,11 @@ u2i 7
 life_fitlength 8
 }
 
+devtype deamon_text w1t1024,w1t1024 {
+cmd 0
+res 1
+}
+
 devtype controls_info w1d1,w1t1024,w1t1024 {
 Emag 0
 crew_cheaf 1
@@ -27,47 +49,6 @@ agenda 2
 
 devtype sounddt w1t100 {
 filename 0
-}
-
-devtype k500ctl w1i1,w1i1,w1t1024,w1t4 {
-mode 0
-ready 1
-msg 2
-modet 3
-}
-
-devtype ddm w1d1,w1i1,w1d1,w1i1,w1i1,w1i1,w1b1,w1i1,w1i1,w1i1,w1i1,w1t1000,w1d1,w1d1,w1i1,w1i1,w1i1,w1i1,w1b1,w1b1,w1i1,w1b1,w1b1 {
-extbeamcurrent 0
-linrunmode 1
-lowbeamcurrent 2
-nshots 3
-modedelay 4
-particles 5
-icrunmode 6
-eshots 7
-clockSrc 8
-pshots 9
-state 10
-stateMsg 11
-extracted 12
-injected 13
-preparing2inject 14
-injecting 15
-preparing2extract 16
-extracting 17
-autorun 18
-extract 19
-linrun 20
-stop 21
-nround 22
-}
-
-devtype vepp2k_info w1i1,w1i1,w1d1,w1d1,w1d1 {
-state 0
-mode 1
-Iele 2
-Ipos 3
-Ebeam 4
 }
 
 devtype pwa w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1d1 {
@@ -91,6 +72,21 @@ Etoday 16
 Elastday 17
 }
 
+devtype vepp2k_info w1i1,w1i1,w1d1,w1d1,w1d1 {
+state 0
+mode 1
+Iele 2
+Ipos 3
+Ebeam 4
+}
+
+devtype k500ctl w1i1,w1i1,w1t1024,w1t4 {
+mode 0
+ready 1
+msg 2
+modet 3
+}
+
 devtype bep_info w1i1,w1t10,w1i1,w1t20,w1t1024,w1d1,w1d1,w1d1 {
 polarity 0
 polarityt 1
@@ -109,7 +105,6 @@ answer 1
 
 dev ddm ddm/noop ~ -
 dev dcct beam_dcct/noop ~ -
-dev modeswitcher modeswitcher/noop ~ -
 dev modectl deamon_text/noop ~ -
 dev info controls_info/noop ~ -
 dev sounddev sounddt/noop ~ -

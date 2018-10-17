@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (76; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (87; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -48,4 +48,5 @@ $TTL 604800
 103 IN PTR hw2.ic.local.
 128 IN PTR ups5k-1.ic.local.
 129 IN PTR ups5k-2.ic.local.
+160 IN PTR raid10-iscsi.ic.local.
 194 IN PTR tester.ic.local.

@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (76; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (87; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -20,6 +20,7 @@ $TTL 604800
 7 IN PTR nfs-overlayfs.ic.local.
 8 IN PTR base-pult.ic.local.
 9 IN PTR web.ic.local.
+10 IN PTR pipe.ic.local.
 32 IN PTR ap-pult.ic.local.
 33 IN PTR ap-k500-entrance.ic.local.
 34 IN PTR ap-k500-3.ic.local.
@@ -31,22 +32,25 @@ $TTL 604800
 59 IN PTR nb-pisarev.ic.local.
 60 IN PTR nb-karpov.ic.local.
 62 IN PTR bigtube.ic.local.
-63 IN PTR printer.ic.local.
 64 IN PTR v5p1.ic.local.
 65 IN PTR v5p2.ic.local.
 66 IN PTR v5p3.ic.local.
 67 IN PTR v5p4.ic.local.
 68 IN PTR linac3.ic.local.
-85 IN PTR rpi1.ic.local.
-86 IN PTR rpi2.ic.local.
+92 IN PTR term-kls.ic.local.
 93 IN PTR term-mrn.ic.local.
+94 IN PTR term-ip1.ic.local.
+95 IN PTR term-ip2.ic.local.
+96 IN PTR term-kickers.ic.local.
 100 IN PTR graph.ic.local.
 101 IN PTR xuba.ic.local.
 102 IN PTR warp.ic.local.
 103 IN PTR xuba-next.ic.local.
+105 IN PTR owncloud.ic.local.
 191 IN PTR foxy-eth3.ic.local.
-192 IN PTR canhw-future.ic.local.
+192 IN PTR canhw.ic.local.
 193 IN PTR cxhw.ic.local.
 194 IN PTR pg10-srv.ic.local.
+195 IN PTR cxout.ic.local.
 253 IN PTR epics-gw.ic.local.
 254 IN PTR ctlhomes.ic.local.

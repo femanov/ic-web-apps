@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (76; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (87; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -19,7 +19,8 @@ _kerberos.ic.local 86400 IN TXT "IC.LOCAL"
 _kpasswd._tcp.ic.local 86400 IN SRV 0 100 464 ipa.ic.local.
 _kpasswd._udp.ic.local 86400 IN SRV 0 100 464 ipa.ic.local.
 _ldap._tcp.ic.local 86400 IN SRV 0 100 389 ipa.ic.local.
-_ntp._tcp.ic.local 86400 IN SRV 0 100 123 name0.ic.local.
+_ntp._tcp.ic.local 86400 IN SRV 0 100 123 ipa.ic.local.
+_ntp._udp.ic.local 86400 IN SRV 0 100 123 ipa.ic.local.
 
 ; A records
 sw-kls IN A 192.168.128.2
@@ -32,7 +33,6 @@ ppc-ipp IN A 192.168.130.33
 ppc-blm IN A 192.168.130.34
 ppc-podval IN A 192.168.130.36
 ppc-rf-adc200s IN A 192.168.130.37
-ppc-ringbpm1 IN A 192.168.130.51
 ppc-ringbpm2 IN A 192.168.130.52
 cangw-linvac IN A 192.168.130.64
 cangw-chanvac IN A 192.168.130.65
@@ -57,7 +57,6 @@ v5-sr-ie IN A 192.168.131.24
 v5-l-kls4 IN A 192.168.131.44
 v5-l-kls1 IN A 192.168.131.41
 v5-l-kls3 IN A 192.168.131.43
-v5-l-kls2 IN A 192.168.131.42
 hw1-ipmi IN A 192.168.128.64
 hw2-ipmi IN A 192.168.128.65
 ppc-sukhphase IN A 192.168.130.38
@@ -87,8 +86,6 @@ linbpm-p14 IN A 192.168.130.141
 linac3 IN A 192.168.129.68
 ap-pult IN A 192.168.129.32
 ups5k-2 IN A 192.168.128.129
-rpi1 IN A 192.168.129.85
-rpi2 IN A 192.168.129.86
 ap-k500-entrance IN A 192.168.129.33
 ap-k500-3 IN A 192.168.129.34
 ap-k500-6pic9 IN A 192.168.129.35
@@ -120,6 +117,7 @@ v5p1 IN A 192.168.129.64
 MCR IN A 192.168.129.64
 nb-karpov IN A 192.168.129.60
 ard-6tv-10 IN A 192.168.130.210
+v5-l-kls2-old IN A 192.168.131.42
 ard-6tv-11 IN A 192.168.130.211
 ard-test IN A 192.168.130.222
 ard-test0 IN A 192.168.130.223
@@ -130,8 +128,6 @@ v5p3 IN A 192.168.129.66
 bigtube IN A 192.168.129.62
 xuba IN A 192.168.129.101
 ichw2-2 IN A 192.168.129.101
-cxhw IN A 192.168.129.193
-canhw IN A 192.168.129.193
 storage-ipmi IN A 192.168.128.68
 v5p4 IN A 192.168.129.67
 ups5k-1 IN A 192.168.128.128
@@ -139,7 +135,6 @@ infra2-ipmi IN A 192.168.128.70
 infra1-ipmi IN A 192.168.128.69
 firewall1-ipmi IN A 192.168.128.71
 firewall2-ipmi IN A 192.168.128.72
-printer IN A 192.168.129.63
 ringbpm1 IN A 192.168.130.160
 camera IN A 192.168.129.40
 iscsi-server IN A 192.168.129.6
@@ -156,12 +151,10 @@ cansrv2 IN A 192.168.128.101
 wifi-ctr IN A 192.168.129.36
 ap-pult-1 IN A 192.168.129.37
 warp IN A 192.168.129.102
-term-mrn IN A 192.168.129.93
 nb-pisarev IN A 192.168.129.59
 nb-pisarev-w IN A 192.168.129.58
 v5p2 IN A 192.168.129.65
 v5p2-ipmi IN A 192.168.128.74
-canhw-future IN A 192.168.129.192
 nfs-overlayfs IN A 192.168.129.7
 base-pult IN A 192.168.129.8
 web IN A 192.168.129.9
@@ -169,3 +162,16 @@ pg10-srv IN A 192.168.129.194
 v5p1-ipmi IN A 192.168.128.73
 xuba-next IN A 192.168.129.103
 v5p3-ipmi IN A 192.168.128.75
+term-mrn IN A 192.168.129.93
+term-ip1 IN A 192.168.129.94
+cxhw IN A 192.168.129.193
+canhw IN A 192.168.129.192
+term-kls IN A 192.168.129.92
+raid10-iscsi IN A 192.168.128.160
+cxout IN A 192.168.129.195
+term-ip2 IN A 192.168.129.95
+ppc-kls2 IN A 192.168.130.51
+v5-l-kls2 IN A 192.168.130.51
+term-kickers IN A 192.168.129.96
+pipe IN A 192.168.129.10
+owncloud IN A 192.168.129.105

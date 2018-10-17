@@ -1,3 +1,8 @@
+devtype deamon_text w1t1024,w1t1024 {
+cmd 0
+res 1
+}
+
 devtype DissectorProc w1d65535,w1d65535,w1d1,w1d1,w1d65535,w1d1,w1d1,w1t1024,w1t1024 {
 resample_data 0
 fit_data 1
@@ -8,11 +13,6 @@ fit_a 5
 make_model_fit 6
 err_mess 7
 fit_switch 8
-}
-
-devtype deamon_text w1t1024,w1t1024 {
-cmd 0
-res 1
 }
 
 devtype ADCCorrelProc w1d1,w1d1,w1i1,w1d1024,w1d1024,w1d1024,w1d1024,w1d1,w1d200,w1d1,w1d101,w1d101,w1d1,w1d101,w1d101,w1d101,w1d101,w1d101,w1d101,w1d1 {

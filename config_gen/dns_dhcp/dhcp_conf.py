@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 import psycopg2
-from settings import DB, DBUSER, DBPASSWORD, DBHOST
+from settings.db import hosts_db
 import ipaddress
 
 try:
-    conn = psycopg2.connect(None, DB, DBUSER, DBPASSWORD, DBHOST)
+    conn = psycopg2.connect(None, **hosts_db)
 except:
     print("unable to connect to DB")
     exit()

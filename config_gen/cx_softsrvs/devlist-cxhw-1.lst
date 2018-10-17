@@ -6,12 +6,41 @@ phase.rbv 3
 amp_gain.set 4
 }
 
+devtype ic_watcher w1t1024,w1t1024 {
+logs 0
+ofr 1
+}
+
+devtype linbpm_proc w1d1,w1d1 {
+y 0
+x 1
+}
+
+devtype magnet w1i1,w1d1,w1d1 {
+fail 0
+Pmag 1
+Pcab 2
+}
+
 devtype quadrupole_magnet w1i1,w1d1,w1d1,w1d1,w1d1 {
 fail 0
 Pmag 1
 Pcab 2
 Gset 3
 Gmeas 4
+}
+
+devtype ADC200_extra w1i1,w1d1,w1d1024,w1i1,w1d1024,w1d1,w1d1024,w1d1024,w1d1024,w1d1024 {
+c1_nav 0
+c1_dt 1
+c1_Ua 2
+c2_Nav 3
+c1_Ubase 4
+c2_dt 5
+c2_U 6
+c2_Ua 7
+c2_Ubase 8
+c1_u 9
 }
 
 devtype bendmag_magnet w1i1,w1d1,w1d1,w1d1,w1d1,w1d1 {
@@ -29,44 +58,195 @@ Bmeas 1
 Ebeam 2
 }
 
-devtype linbpm_proc w1d1,w1d1 {
-y 0
-x 1
-}
-
-devtype ADC200_extra w1i1,w1d1,w1d1024,w1i1,w1d1024,w1d1,w1d1024,w1d1024,w1d1024,w1d1024 {
-c1_nav 0
-c1_dt 1
-c1_Ua 2
-c2_Nav 3
-c1_Ubase 4
-c2_dt 5
-c2_U 6
-c2_Ua 7
-c2_Ubase 8
-c1_u 9
+devtype ion_pump w1i1 {
+fail 0
 }
 
 dev kls1 kls5045_cx/noop ~ -
 dev kls2 kls5045_cx/noop ~ -
 dev kls3 kls5045_cx/noop ~ -
 dev kls4 kls5045_cx/noop ~ -
-dev e2 linbpm_proc/noop ~ -
-dev p11 linbpm_proc/noop ~ -
-dev p10 linbpm_proc/noop ~ -
-dev p9 linbpm_proc/noop ~ -
-dev p6 linbpm_proc/noop ~ -
-dev eTrip linbpm_proc/noop ~ -
-dev eTech linbpm_proc/noop ~ -
-dev e5 linbpm_proc/noop ~ -
-dev e4 linbpm_proc/noop ~ -
-dev e3 linbpm_proc/noop ~ -
+dev ic_watcher ic_watcher/noop ~ -
+dev sy2_4f4 magnet/noop ~ -
+dev sx2_4f4 magnet/noop ~ -
+dev sx1_3f4 magnet/noop ~ -
+dev sy1_3f4 magnet/noop ~ -
+dev sy2_2f4 magnet/noop ~ -
+dev sx2_2f4 magnet/noop ~ -
+dev sy1_1f4 magnet/noop ~ -
+dev sx1_1f4 magnet/noop ~ -
+dev sx2_1f4 magnet/noop ~ -
+dev sy2_1f4 magnet/noop ~ -
+dev sx1_2f4 magnet/noop ~ -
+dev sy1_2f4 magnet/noop ~ -
+dev sx2_3f4 magnet/noop ~ -
+dev sy2_3f4 magnet/noop ~ -
+dev sx1_4f4 magnet/noop ~ -
+dev sy1_4f4 magnet/noop ~ -
 dev e1 linbpm_proc/noop ~ -
-dev adc2 ADC200_extra/noop ~ -
-dev adc1 ADC200_extra/noop ~ -
-dev p14 linbpm_proc/noop ~ -
-dev p13 linbpm_proc/noop ~ -
+dev e2 linbpm_proc/noop ~ -
+dev e3 linbpm_proc/noop ~ -
+dev e4 linbpm_proc/noop ~ -
+dev e5 linbpm_proc/noop ~ -
+dev eTech linbpm_proc/noop ~ -
+dev eTrip linbpm_proc/noop ~ -
+dev p6 linbpm_proc/noop ~ -
+dev p9 linbpm_proc/noop ~ -
+dev p10 linbpm_proc/noop ~ -
+dev p11 linbpm_proc/noop ~ -
 dev p12 linbpm_proc/noop ~ -
+dev p13 linbpm_proc/noop ~ -
+dev p14 linbpm_proc/noop ~ -
+dev adc1 ADC200_extra/noop ~ -
+dev adc2 ADC200_extra/noop ~ -
+dev GUN ion_pump/noop ~ -
+dev rsrv2 magnet/noop ~ -
+dev rsrv1 magnet/noop ~ -
+dev BUN1 ion_pump/noop ~ -
+dev BUN2 ion_pump/noop ~ -
+dev GRUPP ion_pump/noop ~ -
+dev WG1_2 ion_pump/noop ~ -
+dev SLED1 ion_pump/noop ~ -
+dev WG1_3 ion_pump/noop ~ -
+dev WG1_4 ion_pump/noop ~ -
+dev S1_in ion_pump/noop ~ -
+dev S1_out ion_pump/noop ~ -
+dev LOS1 ion_pump/noop ~ -
+dev S2_in ion_pump/noop ~ -
+dev S2_out ion_pump/noop ~ -
+dev LOS2 ion_pump/noop ~ -
+dev SPECT ion_pump/noop ~ -
+dev S3_in ion_pump/noop ~ -
+dev S3_out ion_pump/noop ~ -
+dev LOS3 ion_pump/noop ~ -
+dev WG2_2 ion_pump/noop ~ -
+dev WG2_3 ion_pump/noop ~ -
+dev SLED2 ion_pump/noop ~ -
+dev WG2_4 ion_pump/noop ~ -
+dev WG2_5 ion_pump/noop ~ -
+dev WG2_6 ion_pump/noop ~ -
+dev WG2_7 ion_pump/noop ~ -
+dev WG2_8 ion_pump/noop ~ -
+dev S4_in ion_pump/noop ~ -
+dev S4_out ion_pump/noop ~ -
+dev LOS4 ion_pump/noop ~ -
+dev S5_in ion_pump/noop ~ -
+dev S5_out ion_pump/noop ~ -
+dev LOS5 ion_pump/noop ~ -
+dev TURN_1 ion_pump/noop ~ -
+dev TURN_2 ion_pump/noop ~ -
+dev RSV22 ion_pump/noop ~ -
+dev pCnv ion_pump/noop ~ -
+dev S6_in ion_pump/noop ~ -
+dev S6_out ion_pump/noop ~ -
+dev LOS6 ion_pump/noop ~ -
+dev WG3_2 ion_pump/noop ~ -
+dev SLED3 ion_pump/noop ~ -
+dev WG3_3 ion_pump/noop ~ -
+dev WG3_4 ion_pump/noop ~ -
+dev WG3_5 ion_pump/noop ~ -
+dev WG3_6 ion_pump/noop ~ -
+dev WG3_7 ion_pump/noop ~ -
+dev S7_in ion_pump/noop ~ -
+dev S7_out ion_pump/noop ~ -
+dev LOS7 ion_pump/noop ~ -
+dev S8_in ion_pump/noop ~ -
+dev S8_out ion_pump/noop ~ -
+dev LOS8 ion_pump/noop ~ -
+dev S9_in ion_pump/noop ~ -
+dev S9_out ion_pump/noop ~ -
+dev LOS9 ion_pump/noop ~ -
+dev S10_in ion_pump/noop ~ -
+dev S10_out ion_pump/noop ~ -
+dev LOS10 ion_pump/noop ~ -
+dev WG4_2 ion_pump/noop ~ -
+dev SLED4 ion_pump/noop ~ -
+dev WG4_3 ion_pump/noop ~ -
+dev WG4_4 ion_pump/noop ~ -
+dev WG4_5 ion_pump/noop ~ -
+dev RSV315 ion_pump/noop ~ -
+dev S11_in ion_pump/noop ~ -
+dev S11_out ion_pump/noop ~ -
+dev LOS11 ion_pump/noop ~ -
+dev S12_in ion_pump/noop ~ -
+dev S12_out ion_pump/noop ~ -
+dev LOS12 ion_pump/noop ~ -
+dev S13_in ion_pump/noop ~ -
+dev S13_out ion_pump/noop ~ -
+dev LOS13 ion_pump/noop ~ -
+dev S14_in ion_pump/noop ~ -
+dev S14_out ion_pump/noop ~ -
+dev LOS14 ion_pump/noop ~ -
+dev PP ion_pump/noop ~ -
+dev RSV413 ion_pump/noop ~ -
+dev RSV414 ion_pump/noop ~ -
+dev RSV415 ion_pump/noop ~ -
+dev _5D1 ion_pump/noop ~ -
+dev _5D2 ion_pump/noop ~ -
+dev _5D3 ion_pump/noop ~ -
+dev _5D4 ion_pump/noop ~ -
+dev _6D1 ion_pump/noop ~ -
+dev _6D2 ion_pump/noop ~ -
+dev _6D3 ion_pump/noop ~ -
+dev _6D4 ion_pump/noop ~ -
+dev _7D1 ion_pump/noop ~ -
+dev _7D2 ion_pump/noop ~ -
+dev _7D3 ion_pump/noop ~ -
+dev _7D4 ion_pump/noop ~ -
+dev _8D1 ion_pump/noop ~ -
+dev _8D2 ion_pump/noop ~ -
+dev _8D3 ion_pump/noop ~ -
+dev _8D4 ion_pump/noop ~ -
+dev vK1 ion_pump/noop ~ -
+dev vK2 ion_pump/noop ~ -
+dev vK3 ion_pump/noop ~ -
+dev vK4 ion_pump/noop ~ -
+dev vK5 ion_pump/noop ~ -
+dev vK6 ion_pump/noop ~ -
+dev vK7 ion_pump/noop ~ -
+dev vK8 ion_pump/noop ~ -
+dev vK9 ion_pump/noop ~ -
+dev vK10 ion_pump/noop ~ -
+dev vK11 ion_pump/noop ~ -
+dev vK12 ion_pump/noop ~ -
+dev vK13 ion_pump/noop ~ -
+dev vK14 ion_pump/noop ~ -
+dev vR43 ion_pump/noop ~ -
+dev vE1 ion_pump/noop ~ -
+dev vE2 ion_pump/noop ~ -
+dev vE3 ion_pump/noop ~ -
+dev vE4 ion_pump/noop ~ -
+dev vE5 ion_pump/noop ~ -
+dev vR61 ion_pump/noop ~ -
+dev vR62 ion_pump/noop ~ -
+dev vR63 ion_pump/noop ~ -
+dev vR64 ion_pump/noop ~ -
+dev vP1 ion_pump/noop ~ -
+dev vP2 ion_pump/noop ~ -
+dev vP3 ion_pump/noop ~ -
+dev vP4 ion_pump/noop ~ -
+dev vP5 ion_pump/noop ~ -
+dev vP6 ion_pump/noop ~ -
+dev vP7 ion_pump/noop ~ -
+dev vT1 ion_pump/noop ~ -
+dev v5T2 ion_pump/noop ~ -
+dev v5T3 ion_pump/noop ~ -
+dev v5T4 ion_pump/noop ~ -
+dev v5T5 ion_pump/noop ~ -
+dev v6T6 ion_pump/noop ~ -
+dev v6T7 ion_pump/noop ~ -
+dev v6T8 ion_pump/noop ~ -
+dev v6T9 ion_pump/noop ~ -
+dev v6T10 ion_pump/noop ~ -
+dev v6T11 ion_pump/noop ~ -
+dev v6T12 ion_pump/noop ~ -
+dev v6T13 ion_pump/noop ~ -
+dev vR120 ion_pump/noop ~ -
+dev vR121 ion_pump/noop ~ -
+dev vR122 ion_pump/noop ~ -
+dev vR123 ion_pump/noop ~ -
+dev lens1 magnet/noop ~ -
+dev lens2 magnet/noop ~ -
 dev QL1 quadrupole_magnet/noop ~ -
 dev QL2 quadrupole_magnet/noop ~ -
 dev QL3 quadrupole_magnet/noop ~ -
@@ -104,12 +284,68 @@ dev QL28 quadrupole_magnet/noop ~ -
 dev QL29 quadrupole_magnet/noop ~ -
 dev QL30 quadrupole_magnet/noop ~ -
 dev QL31 quadrupole_magnet/noop ~ -
+dev gun_h magnet/noop ~ -
+dev gun_v magnet/noop ~ -
+dev cav_h magnet/noop ~ -
+dev cav_v magnet/noop ~ -
+dev scr_h magnet/noop ~ -
+dev scr_v magnet/noop ~ -
+dev bun_h magnet/noop ~ -
+dev bun_v magnet/noop ~ -
+dev bun1_h magnet/noop ~ -
+dev bun2_h magnet/noop ~ -
+dev s1_h magnet/noop ~ -
+dev s1_v magnet/noop ~ -
+dev s2_h magnet/noop ~ -
+dev s2_v magnet/noop ~ -
+dev s3_h magnet/noop ~ -
+dev s3_v magnet/noop ~ -
+dev s4_h magnet/noop ~ -
+dev s4_v magnet/noop ~ -
+dev s5_h magnet/noop ~ -
+dev s5_v magnet/noop ~ -
+dev tech_h magnet/noop ~ -
+dev tech_v magnet/noop ~ -
+dev b1 magnet/noop ~ -
+dev b2 magnet/noop ~ -
+dev b_v magnet/noop ~ -
+dev b3 magnet/noop ~ -
+dev tr_h magnet/noop ~ -
+dev tr_v magnet/noop ~ -
+dev tr2_h magnet/noop ~ -
+dev tr2_v magnet/noop ~ -
+dev cnv_h magnet/noop ~ -
+dev cnv_v magnet/noop ~ -
+dev s6_v magnet/noop ~ -
+dev s7_v magnet/noop ~ -
+dev s8_v magnet/noop ~ -
+dev s9_h magnet/noop ~ -
+dev s9_v magnet/noop ~ -
+dev s10_h magnet/noop ~ -
+dev s10_v magnet/noop ~ -
+dev s11_h magnet/noop ~ -
+dev s11_v magnet/noop ~ -
+dev s12_h magnet/noop ~ -
+dev s12_v magnet/noop ~ -
+dev s13_h magnet/noop ~ -
+dev s13_v magnet/noop ~ -
+dev s14_h magnet/noop ~ -
+dev s14_v magnet/noop ~ -
 dev q2l1 quadrupole_magnet/noop ~ -
 dev q2l2 quadrupole_magnet/noop ~ -
 dev q2l3 quadrupole_magnet/noop ~ -
 dev q2l4 quadrupole_magnet/noop ~ -
 dev d1m5t7 bendmag_magnet/noop ~ -
 dev q2l5 quadrupole_magnet/noop ~ -
+dev c2l1_z magnet/noop ~ -
+dev c2l2_x magnet/noop ~ -
+dev c2l3_z magnet/noop ~ -
+dev c2l4_x magnet/noop ~ -
+dev c2m1 magnet/noop ~ -
+dev c2m2 magnet/noop ~ -
+dev c2l5_x magnet/noop ~ -
+dev c2m3 magnet/noop ~ -
+dev c2c_x magnet/noop ~ -
 dev q1l0 quadrupole_magnet/noop ~ -
 dev q1L1 quadrupole_magnet/noop ~ -
 dev d1m bendmag_magnet/noop ~ -
@@ -119,6 +355,27 @@ dev q1l4n8 quadrupole_magnet/noop ~ -
 dev q1l7n9 quadrupole_magnet/noop ~ -
 dev q1l10 quadrupole_magnet/noop ~ -
 dev q1l11 quadrupole_magnet/noop ~ -
+dev c1l4_q magnet/noop ~ -
+dev c1l7_q magnet/noop ~ -
+dev c1l0_x magnet/noop ~ -
+dev c1l1_z magnet/noop ~ -
+dev c1m1 magnet/noop ~ -
+dev c1l2_z magnet/noop ~ -
+dev c1m2 magnet/noop ~ -
+dev c1l3_z magnet/noop ~ -
+dev c1l4_x magnet/noop ~ -
+dev c1m3 magnet/noop ~ -
+dev c1l6_z magnet/noop ~ -
+dev c1m4 magnet/noop ~ -
+dev c1l7_x magnet/noop ~ -
+dev c1l8_z magnet/noop ~ -
+dev c1l10_x magnet/noop ~ -
+dev c1m5 magnet/noop ~ -
+dev c1m6 magnet/noop ~ -
+dev c1l11_x magnet/noop ~ -
+dev c1m7 magnet/noop ~ -
+dev csm1 magnet/noop ~ -
+dev csm2 magnet/noop ~ -
 dev drm bendmag_magnet/noop ~ -
 dev qd1 quadrupole_magnet/noop ~ -
 dev qf1n2 quadrupole_magnet/noop ~ -
@@ -126,9 +383,105 @@ dev qd2 quadrupole_magnet/noop ~ -
 dev qd3 quadrupole_magnet/noop ~ -
 dev qf3 quadrupole_magnet/noop ~ -
 dev qf4 quadrupole_magnet/noop ~ -
+dev c3f3_x magnet/noop ~ -
+dev c3d3_z magnet/noop ~ -
+dev c3d2_z magnet/noop ~ -
+dev c3f2_x magnet/noop ~ -
+dev crm5 magnet/noop ~ -
+dev c3F4_z magnet/noop ~ -
+dev crm6 magnet/noop ~ -
+dev c3f1_x magnet/noop ~ -
+dev c3d1_z magnet/noop ~ -
+dev c4d1_z magnet/noop ~ -
+dev c4f1_x magnet/noop ~ -
+dev crm7 magnet/noop ~ -
+dev c4F4_z magnet/noop ~ -
+dev crm8 magnet/noop ~ -
+dev c4f2_x magnet/noop ~ -
+dev c4d2_z magnet/noop ~ -
+dev c4d3_z magnet/noop ~ -
+dev c4f3_x magnet/noop ~ -
+dev c1f3_x magnet/noop ~ -
+dev c1d3_z magnet/noop ~ -
+dev c1d2_z magnet/noop ~ -
+dev c1f2_x magnet/noop ~ -
+dev crm1 magnet/noop ~ -
+dev c1F4_z magnet/noop ~ -
+dev crm2 magnet/noop ~ -
+dev c1f1_x magnet/noop ~ -
+dev c1d1_z magnet/noop ~ -
+dev c2d1_z magnet/noop ~ -
+dev c2f1_x magnet/noop ~ -
+dev crm3 magnet/noop ~ -
+dev c2F4_z magnet/noop ~ -
+dev crm4 magnet/noop ~ -
+dev c2f2_x magnet/noop ~ -
+dev c2d2_z magnet/noop ~ -
+dev c2d3_z magnet/noop ~ -
+dev c2f3_x magnet/noop ~ -
+dev c3f3_q magnet/noop ~ -
+dev c3d3_q magnet/noop ~ -
+dev c3d2_q magnet/noop ~ -
+dev c3f2_q magnet/noop ~ -
+dev c3f4_q magnet/noop ~ -
+dev c3f1_q magnet/noop ~ -
+dev c3d1_q magnet/noop ~ -
+dev c4d1_q magnet/noop ~ -
+dev c4f1_q magnet/noop ~ -
+dev c4f4_q magnet/noop ~ -
+dev c4f2_q magnet/noop ~ -
+dev c4d2_q magnet/noop ~ -
+dev c4d3_q magnet/noop ~ -
+dev c4f3_q magnet/noop ~ -
+dev c1f3_q magnet/noop ~ -
+dev c1d3_q magnet/noop ~ -
+dev c1d2_q magnet/noop ~ -
+dev c1f2_q magnet/noop ~ -
+dev c1f4_q magnet/noop ~ -
+dev c1f1_q magnet/noop ~ -
+dev c1d1_q magnet/noop ~ -
+dev c2d1_q magnet/noop ~ -
+dev c2f1_q magnet/noop ~ -
+dev c2f4_q magnet/noop ~ -
+dev c2f2_q magnet/noop ~ -
+dev c2d2_q magnet/noop ~ -
+dev c2d3_q magnet/noop ~ -
+dev c2f3_q magnet/noop ~ -
 dev d3m1t3 bendmag_magnet/noop ~ -
+dev q3l1 magnet/noop ~ -
+dev q3l2 magnet/noop ~ -
+dev q3l3 magnet/noop ~ -
+dev q3l4 magnet/noop ~ -
+dev q3l5 magnet/noop ~ -
+dev c3m1 magnet/noop ~ -
+dev c3m2 magnet/noop ~ -
+dev c3C1_x magnet/noop ~ -
+dev c3C2_x magnet/noop ~ -
+dev c3m3 magnet/noop ~ -
+dev c3l4_x magnet/noop ~ -
+dev c3m4 magnet/noop ~ -
 dev d4m1t3 bendmag_magnet/noop ~ -
+dev q4l1 magnet/noop ~ -
+dev q4l2 magnet/noop ~ -
+dev q4l3 magnet/noop ~ -
+dev q4l4 magnet/noop ~ -
 dev d4m4n5 bendmag/noop ~ -
+dev q4l5 magnet/noop ~ -
+dev q4l6 magnet/noop ~ -
+dev q4l7 magnet/noop ~ -
+dev c4C1_x magnet/noop ~ -
+dev c4m1 magnet/noop ~ -
+dev c4C2_x magnet/noop ~ -
+dev c4m2 magnet/noop ~ -
+dev c4m3 magnet/noop ~ -
+dev c4l4_z magnet/noop ~ -
+dev c4m4 magnet/noop ~ -
+dev c4m5 magnet/noop ~ -
+dev c4l7_x magnet/noop ~ -
 dev d3m4n5 bendmag_magnet/noop ~ -
+dev q3l6 magnet/noop ~ -
+dev q3l7 magnet/noop ~ -
 dev d5M1t4 bendmag_magnet/noop ~ -
 dev d6M1t4 bendmag_magnet/noop ~ -
+dev c3m5 magnet/noop ~ -
+dev c3l7_z magnet/noop ~ -

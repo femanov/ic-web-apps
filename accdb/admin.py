@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Sys, Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData
+from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData
 
-from .models import SysMP
+from .models import Sys
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 
@@ -22,13 +22,13 @@ class DevtypeAdmin(admin.ModelAdmin):
     filter_horizontal = ('chans', 'metadata')
 
 
-class SysAdmin(admin.ModelAdmin):
-    list_display = ('name', 'label', 'parent', 'ord', 'description', 'dev_count')
-    filter_horizontal = ('devs',)
+# class SysAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'label', 'parent', 'ord', 'description', 'dev_count')
+#     filter_horizontal = ('devs',)
 
 
-class SysMPAdmin(TreeAdmin):
-    form = movenodeform_factory(SysMP)
+class SysAdmin(TreeAdmin):
+    form = movenodeform_factory(Sys)
     filter_horizontal = ('devs',)
 
 
@@ -39,7 +39,7 @@ class NamesysAdmin(admin.ModelAdmin):
 
 class DevAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled')
-    list_filter = ['enabled', 'sys', 'namesys', 'devtype']
+    list_filter = ['enabled', 'metadata', 'namesys', 'devtype']
     search_fields = ['label', 'name', 'description']
     filter_horizontal = ('devtype', 'metadata')
 
@@ -47,7 +47,7 @@ class DevAdmin(admin.ModelAdmin):
 class ChanAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'access', 'units',
                     'dtype', 'dsize', 'protocol', 'ord', 'savable',)
-    list_filter = ['protocol']
+    list_filter = ['protocol', 'devtype']
     search_fields = ['label', 'name']
 
 
@@ -63,9 +63,7 @@ class DevTreeItemAdmin(admin.ModelAdmin):
 class MetaDataAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
-
 admin.site.register(Sys, SysAdmin)
-admin.site.register(SysMP, SysMPAdmin)
 
 admin.site.register(Dev, DevAdmin)
 admin.site.register(Devtype, DevtypeAdmin)

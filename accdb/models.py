@@ -1,12 +1,9 @@
 from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.db.models import Count
-from django.contrib.postgres.fields import ArrayField
-from treebeard.al_tree import AL_Node
 from treebeard.mp_tree import MP_Node
 
 # Create your models here.
-
 class Namesys(models.Model):
     name = models.CharField(max_length=300)
     label = models.CharField(max_length=100)
@@ -42,7 +39,7 @@ class Chan(models.Model):
 
 class MetaData(models.Model):
     name = models.CharField(max_length=100)
-    data = JSONField(default=dict())
+    data = JSONField(default=dict)
 
     def __str__(self):
         return self.name
@@ -98,14 +95,13 @@ class SysManager(models.Manager):
         return super(SysManager, self).get_queryset().annotate(devcount=Count('devs'))
 
 
-class Sys(models.Model):
-    name = models.CharField(max_length=100)
-    label = models.CharField(max_length=100)
-    description = models.CharField(max_length=1024)
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
+class Sys(MP_Node):
+    node_order_by = ['ord']
+    ord = models.IntegerField()
+    name = models.CharField(max_length=100, default='')
+    label = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=1024, default='', blank=True, null=True)
     devs = models.ManyToManyField(Dev, blank=True)
-    objects = SysManager()
-    ord = models.IntegerField(default=0)
 
     def dev_count(self):
         return self.devcount
@@ -115,26 +111,10 @@ class Sys(models.Model):
 
     class Meta:
         db_table = 'sys'
-        ordering = ['ord', ]
-
-
-class SysMP(MP_Node):
-    node_order_by = ['ord']
-    ord = models.IntegerField()
-    name = models.CharField(max_length=100, default='')
-    label = models.CharField(max_length=100, default='')
-    description = models.CharField(max_length=1024, default='', blank=True, null=True)
-    devs = models.ManyToManyField(Dev, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'sys_mp'
-
 
 
 # some data about device hierarchic structures like
+# possibly need to switch to MP_node
 class DevTree(models.Model):
     name = models.CharField(max_length=100)
 

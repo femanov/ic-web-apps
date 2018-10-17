@@ -11,7 +11,7 @@ class FullChan(models.Model):
     dev_id = models.IntegerField(default=0)
     chan_id = models.IntegerField(default=0)
     is_current = models.BooleanField(default=False)
-    systems = ArrayField(models.IntegerField(), default=[])
+    systems = ArrayField(models.IntegerField(), default=list)
 
     class Meta:
         db_table = 'fullchan'
