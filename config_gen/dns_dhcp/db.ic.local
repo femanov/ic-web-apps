@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (87; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (88; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -160,7 +160,6 @@ base-pult IN A 192.168.129.8
 web IN A 192.168.129.9
 pg10-srv IN A 192.168.129.194
 v5p1-ipmi IN A 192.168.128.73
-xuba-next IN A 192.168.129.103
 v5p3-ipmi IN A 192.168.128.75
 term-mrn IN A 192.168.129.93
 term-ip1 IN A 192.168.129.94
@@ -175,3 +174,9 @@ v5-l-kls2 IN A 192.168.130.51
 term-kickers IN A 192.168.129.96
 pipe IN A 192.168.129.10
 owncloud IN A 192.168.129.105
+autofstest IN A 192.168.129.252
+osc-kls1 IN A 192.168.130.224
+osc-kls2 IN A 192.168.130.225
+osc-kls3 IN A 192.168.130.226
+osc-kls4 IN A 192.168.130.227
+dev-pult IN A 192.168.129.103

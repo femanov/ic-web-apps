@@ -1,27 +1,28 @@
-devtype ddm w1b1,w1i1,w1i1,w1i1,w1i1,w1i1,w1i1,w1i1,w1d1,w1i1,w1i1,w1t1000,w1b1,w1b1,w1i1,w1b1,w1b1,w1d1,w1i1,w1i1,w1d1,w1d1,w1i1 {
-icrunmode 0
-linrunmode 1
-nshots 2
-clockSrc 3
-eshots 4
-modedelay 5
-particles 6
-pshots 7
-injected 8
-injecting 9
-preparing2inject 10
-stateMsg 11
-autorun 12
-extract 13
-linrun 14
-stop 15
-nround 16
-extracted 17
-extracting 18
-preparing2extract 19
-extbeamcurrent 20
-lowbeamcurrent 21
-state 22
+devtype ddm w1i1,w1i1,w1i1,w1i1,w1i1,w1t20,w1t1000,w1b1,w1b1,w1b1,w1b1,w1b1,w1b1,w1b1,w1b1,w1d1,w1t4,w1t1,w1t20,w1b1,w1b1,w1b1,w1b1,w1d1 {
+linrunmode 0
+clockSrc 1
+eshots 2
+modedelay 3
+pshots 4
+icrunmode 5
+stateMsg 6
+autorun 7
+extract 8
+stop 9
+injected 10
+injecting 11
+preparing2inject 12
+inject 13
+nround 14
+lowbeamcurrent 15
+usecase 16
+particles 17
+state 18
+extracted 19
+extracting 20
+preparing2extract 21
+extr_train 22
+extr_train_interval 23
 }
 
 devtype beam_dcct w1d1,w1d1,w1d1,w1d1,w1d1,w1d1,w1i1,w1d1,w1i1 {

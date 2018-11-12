@@ -1,5 +1,5 @@
 $TTL 604800
-@ IN SOA ic.local. emanov.inp.nsk.su. (87; serial
+@ IN SOA ic.local. emanov.inp.nsk.su. (88; serial
 604800    ; Refresh
 86400      ; Retry
 2419200 ;  Expire
@@ -45,12 +45,13 @@ $TTL 604800
 100 IN PTR graph.ic.local.
 101 IN PTR xuba.ic.local.
 102 IN PTR warp.ic.local.
-103 IN PTR xuba-next.ic.local.
+103 IN PTR dev-pult.ic.local.
 105 IN PTR owncloud.ic.local.
 191 IN PTR foxy-eth3.ic.local.
 192 IN PTR canhw.ic.local.
 193 IN PTR cxhw.ic.local.
 194 IN PTR pg10-srv.ic.local.
 195 IN PTR cxout.ic.local.
+252 IN PTR autofstest.ic.local.
 253 IN PTR epics-gw.ic.local.
 254 IN PTR ctlhomes.ic.local.
