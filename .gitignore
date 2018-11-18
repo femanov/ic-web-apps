@@ -27,3 +27,7 @@ wheels/
 *.egg
 MANIFEST
 
+*.lst
+*.cond
+db.*
+named.*

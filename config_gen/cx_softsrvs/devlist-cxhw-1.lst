@@ -1,6 +1,0 @@
-devtype ic_watcher w1t1024,w1t1024 {
-logs 0
-ofr 1
-}
-
-dev ic_watcher ic_watcher/noop ~ -
