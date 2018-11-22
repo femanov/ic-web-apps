@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData
+from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, CAccessType, CProtocol
 
 from .models import Sys
 from treebeard.admin import TreeAdmin
@@ -45,11 +45,18 @@ class DevAdmin(admin.ModelAdmin):
 
 
 class ChanAdmin(admin.ModelAdmin):
-    list_display = ('label', 'name', 'access', 'units',
-                    'dtype', 'dsize', 'protocol', 'ord', 'savable',)
-    list_filter = ['protocol', 'devtype']
+    list_display = ('label', 'name', 'access_type', 'units',
+                    'dtype', 'dsize', 'cprotocol', 'ord', 'savable',)
+    list_filter = ['cprotocol', 'devtype']
     search_fields = ['label', 'name']
 
+
+class ChanAccessAdmin(admin.ModelAdmin):
+    list_display = ('access', 'savable', 'direct_loadable')
+
+
+class ChanProtocolAdmin(admin.ModelAdmin):
+    list_display = ('protocol',)
 
 
 class DevTreeAdmin(admin.ModelAdmin):
@@ -69,6 +76,8 @@ admin.site.register(Dev, DevAdmin)
 admin.site.register(Devtype, DevtypeAdmin)
 admin.site.register(Namesys, NamesysAdmin)
 admin.site.register(Chan, ChanAdmin)
+admin.site.register(CAccessType, ChanAccessAdmin)
+admin.site.register(CProtocol, ChanProtocolAdmin)
 admin.site.register(DevTree, DevTreeAdmin)
 admin.site.register(DevTreeItem, DevTreeItemAdmin)
 admin.site.register(MetaData, MetaDataAdmin)
