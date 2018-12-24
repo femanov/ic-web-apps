@@ -18,7 +18,7 @@ class Namesys(models.Model):
         ordering = ['id', ]
 
 
-class CAccessType(models.Model):
+class AccessType(models.Model):
     access = models.CharField(max_length=10, default='r')
     savable = models.BooleanField(default=True)
     direct_loadable = models.BooleanField(default=True)
@@ -30,7 +30,7 @@ class CAccessType(models.Model):
         db_table = 'caccess_type'
 
 
-class CProtocol(models.Model):
+class Protocol(models.Model):
     protocol = models.CharField(max_length=10)
 
     def __str__(self):
@@ -48,8 +48,8 @@ class Chan(models.Model):
     dsize = models.IntegerField(default=1)
     ord = models.IntegerField(default=1)
     savable = models.BooleanField(default=True)
-    access_type = models.ForeignKey(CAccessType, on_delete=models.SET_NULL, blank=True, null=True)
-    cprotocol = models.ForeignKey(CProtocol, on_delete=models.SET_NULL, blank=True, null=True)
+    access_type = models.ForeignKey(AccessType, on_delete=models.SET_NULL, blank=True, null=True)
+    cprotocol = models.ForeignKey(Protocol, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.label

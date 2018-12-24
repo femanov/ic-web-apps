@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, CAccessType, CProtocol
+from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, AccessType, Protocol
 
 from .models import Sys
 from treebeard.admin import TreeAdmin
@@ -76,8 +76,8 @@ admin.site.register(Dev, DevAdmin)
 admin.site.register(Devtype, DevtypeAdmin)
 admin.site.register(Namesys, NamesysAdmin)
 admin.site.register(Chan, ChanAdmin)
-admin.site.register(CAccessType, ChanAccessAdmin)
-admin.site.register(CProtocol, ChanProtocolAdmin)
+admin.site.register(AccessType, ChanAccessAdmin)
+admin.site.register(Protocol, ChanProtocolAdmin)
 admin.site.register(DevTree, DevTreeAdmin)
 admin.site.register(DevTreeItem, DevTreeItemAdmin)
 admin.site.register(MetaData, MetaDataAdmin)
