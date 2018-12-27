@@ -5,7 +5,7 @@ from .models import Mode, ModeData, FullChan
 
 
 class ModeAdmin(admin.ModelAdmin):
-    list_display = ('comment', 'stime')
+    list_display = ('author', 'comment', 'stime', 'archived')
 
 
 class ModeDataAdmin(admin.ModelAdmin):
