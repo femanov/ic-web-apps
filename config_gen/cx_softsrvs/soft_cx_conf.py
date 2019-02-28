@@ -3,6 +3,10 @@
 from acc_db.db import *
 from settings.db import acc_cfg
 
+print('CXv4 software servers db-based config generator')
+print('print')
+
+
 dtypes = {
     'int8':   'b',
     'int16':  'h',
@@ -18,16 +22,9 @@ dtypes = {
 
 db = AccConfig(**acc_cfg)
 
-
-
-# software servers located at ichw1-2,
-# 0 - server for automatic control software
-# 1 - extension devices - all soft devtypes with not soft server will be here
-# 2 - balakin's data processing software
-
-# in a DB level 'soft' is int field of devtype, if it's > 0 - it is a software devtype
-
-# get default extension server from DB
+# software servers:
+# extension devices - placed to default soft-server (first which has def_soft)
+# others - as related in database
 
 db.execute('select id, name from namesys where soft and def_soft limit 1')
 ext_srv = db.cur.fetchall()
