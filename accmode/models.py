@@ -47,7 +47,7 @@ class ModeData(models.Model):
 
 class ModeMark(models.Model):
     mode = models.ForeignKey(Mode, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     comment = models.CharField(max_length=1024)
     author = models.CharField(max_length=100, default='')
 
