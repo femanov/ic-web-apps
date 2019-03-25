@@ -1,3 +1,4 @@
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
@@ -23,6 +24,7 @@ class Mode(models.Model):
     author = models.CharField(max_length=50, default='')
     stime = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
+    info = JSONField(default=dict)
 
     def __str__(self):
         return self.comment

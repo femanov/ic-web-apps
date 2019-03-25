@@ -22,11 +22,6 @@ class DevtypeAdmin(admin.ModelAdmin):
     filter_horizontal = ('chans', 'metadata')
 
 
-# class SysAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'label', 'parent', 'ord', 'description', 'dev_count')
-#     filter_horizontal = ('devs',)
-
-
 class SysAdmin(TreeAdmin):
     form = movenodeform_factory(Sys)
     filter_horizontal = ('devs',)
@@ -39,7 +34,7 @@ class NamesysAdmin(admin.ModelAdmin):
 
 class DevAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled')
-    list_filter = ['enabled', 'metadata', 'namesys', 'devtype']
+    list_filter = ['enabled', 'metadata', 'sys', 'namesys', 'devtype']
     search_fields = ['label', 'name', 'description']
     filter_horizontal = ('devtype', 'metadata')
 
