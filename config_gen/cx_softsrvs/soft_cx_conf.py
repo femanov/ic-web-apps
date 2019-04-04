@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-from acc_db.db import *
-from settings.db import acc_cfg
+from acc_db.db import AccConfig
 
 print('CXv4 software servers db-based config generator')
-print('print')
-
 
 dtypes = {
     'int8':   'b',
@@ -20,14 +17,14 @@ dtypes = {
     '':       'd',
 }
 
-db = AccConfig(**acc_cfg)
+db = AccConfig()
 
 # software servers:
 # extension devices - placed to default soft-server (first which has def_soft)
 # others - as related in database
 
-db.execute('select id, name from namesys where soft and def_soft limit 1')
-ext_srv = db.cur.fetchall()
+db.execute('select id,name from namesys where soft and def_soft limit 1')
+ext_srv = db.cur.fetchall()[0]
 
 print('extension devises server:', ext_srv)
 
@@ -43,7 +40,7 @@ for srv in srvs:
                ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft and namesys.id=%s'
                ' group by dev_devtype.dev_id', (srv[0],))
     dts = db.cur.fetchall()
-    if srv == ext_srv:
+    if srv[0] == ext_srv[0]:
         db.execute(
             'select distinct array_agg(devtype.id)'
             ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
