@@ -35,14 +35,14 @@ srvs = db.cur.fetchall()
 
 for srv in srvs:
     print(srv)
-    db.execute('select distinct array_agg(devtype.id) '
+    db.execute('select distinct array_agg(devtype.id order by devtype.id) '
                ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
                ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft and namesys.id=%s'
                ' group by dev_devtype.dev_id', (srv[0],))
     dts = db.cur.fetchall()
     if srv[0] == ext_srv[0]:
         db.execute(
-            'select distinct array_agg(devtype.id)'
+            'select distinct array_agg(devtype.id order by devtype.id)'
             ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
             ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and not namesys.soft'
             ' group by dev_devtype.dev_id')
