@@ -31,3 +31,4 @@ MANIFEST
 *.cond
 db.*
 named.*
+*.devtype
