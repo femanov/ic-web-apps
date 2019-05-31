@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from acc_db.db import AccConfig
+import os
 
 print('CXv4 software servers db-based config generator')
 
@@ -35,6 +36,13 @@ srvs = db.cur.fetchall()
 
 for srv in srvs:
     print(srv)
+    dirName = "./devtypes/" + srv[1]
+    if not os.path.exists(dirName):
+        os.mkdir(dirName)
+        print("Directory ", dirName, " Created ")
+    else:
+        print("Directory ", dirName, " already exists")
+
     db.execute('select distinct array_agg(devtype.id order by devtype.id) '
                ' from dev_devtype, devtype, dev, namesys where dev_devtype.devtype_id=devtype.id and devtype.soft'
                ' and dev_devtype.dev_id=dev.id and dev.namesys_id=namesys.id and namesys.soft and namesys.id=%s'
@@ -61,22 +69,32 @@ for srv in srvs:
         dt_name = '_'.join([y[0] for y in names])
         dt_names.append(dt_name)
 
+        dt_file = open(dirName + "/" + dt_name + ".devtype", 'w')
+
         # may be better use select distinct
-        db.execute('select chan.id,chan.name,chan.dtype,chan.dsize,chan.units'
+        db.execute('select array_agg(chan.name),array_agg(chan.units),chan.dtype,chan.dsize'
                    ' from devtype_chans,chan'
-                   ' where devtype_chans.devtype_id=any(%s) and devtype_chans.chan_id=chan.id', (x,))
+                   ' where devtype_chans.devtype_id=any(%s) and devtype_chans.chan_id=chan.id'
+                   ' group by chan.dtype,chan.dsize'
+                   ' order by chan.dtype,chan.dsize', (x,))
+
         chans = db.cur.fetchall()
         db.conn.commit()
 
         chan_data = []
         chan_names = []
-        for y in range(len(chans)):
-            c = chans[y]
-            chan_data.append('w1%s%d' % (dtypes[c[2]], c[3]))
-            chan_names.append('%s %d' % (c[1], y))
+        c_ind = 0
+        for cg in chans:
+            chan_data.append('w%d%s%d' % (len(cg[0]), dtypes[cg[2]], cg[3]))
+            for cn in cg[0]:
+                chan_names.append('%s %d' % (cn, c_ind))
+                c_ind += 1
 
         dt_str = 'devtype ' + dt_name + ' ' + ','.join(chan_data) + ' {\n' + '\n'.join(chan_names) + '\n}\n\n'
-        conf_file.write(dt_str)
+
+        dt_file.write(dt_str)
+        dt_file.close()
+        conf_file.write('include(' + dirName + '/' + dt_name + '.devtype)\n')
 
     db.execute('select dev.id,dev.name,array_agg(devtype.id order by devtype.id)'
                ' from dev_devtype,devtype,dev,namesys where dev.id=dev_devtype.dev_id and dev_devtype.devtype_id=devtype.id'
