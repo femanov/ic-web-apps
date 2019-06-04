@@ -36,7 +36,7 @@ srvs = db.cur.fetchall()
 
 for srv in srvs:
     print(srv)
-    dirName = "./devtypes/" + srv[1]
+    dirName = "./types/" + srv[1]
     if not os.path.exists(dirName):
         os.mkdir(dirName)
         print("Directory ", dirName, " Created ")
