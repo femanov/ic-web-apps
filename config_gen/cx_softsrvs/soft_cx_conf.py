@@ -31,7 +31,7 @@ print('extension devises server:', ext_srv)
 
 # select servers from DB
 
-db.execute('select id, name from namesys where soft order by name')
+db.execute('select id, name, info from namesys where soft order by name')
 srvs = db.cur.fetchall()
 
 for srv in srvs:
@@ -56,6 +56,7 @@ for srv in srvs:
             ' group by dev_devtype.dev_id')
         exts = db.cur.fetchall()
         dts = dts + exts
+
     dts = [x[0] for x in dts]
     print(dts)
 
@@ -110,9 +111,6 @@ for srv in srvs:
                    ' group by dev.id order by dev.ord')
         devs = devs + db.cur.fetchall()
 
-
-    db.conn.commit()
-
     for x in devs:
         ind = dts.index(x[2])
         # need to check for points in dev name
@@ -122,6 +120,17 @@ for srv in srvs:
             conf_file.write('cpoint %s %s\n' % (x[1], dev_name))
         else:
             conf_file.write('dev %s %s/noop ~ -\n' % (x[1], dt_names[ind]))
+
+    if 'sys_devs' in srv[2]:
+        if srv[2]['sys_devs']:
+            print("server for system devices, generating...")
+            db.execute('select name from sys')
+            systems = db.cur.fetchall()
+            for x in systems:
+                dev_name = x[0].replace('.', '_')
+                conf_file.write('dev systems_%s system/noop ~ -\n' % (dev_name, ))
+
+    db.conn.commit()
 
     conf_file.close()
 

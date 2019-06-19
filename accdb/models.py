@@ -9,6 +9,7 @@ class Namesys(models.Model):
     label = models.CharField(max_length=100)
     soft = models.BooleanField(default=False)
     def_soft = models.BooleanField(default=False)
+    info = JSONField(default=dict)
 
     def __str__(self):
         return self.label
