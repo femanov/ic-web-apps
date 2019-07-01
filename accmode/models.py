@@ -8,7 +8,7 @@ class FullChan(models.Model):
     chan_name = models.CharField(max_length=1024, default='')
     cur_chan_name = models.CharField(max_length=1024, default='')
     access = models.CharField(max_length=10, default='')
-    namesys_id = models.IntegerField(default=0)
+    #namesys_id = models.IntegerField(default=0)
     dev_id = models.IntegerField(default=0)
     chan_id = models.IntegerField(default=0)
     is_current = models.BooleanField(default=False)
@@ -16,8 +16,9 @@ class FullChan(models.Model):
 
     class Meta:
         db_table = 'fullchan'
-        unique_together = (("chan_name", "namesys_id", "dev_id", "chan_id"),)
-
+        constraints = [
+            models.UniqueConstraint(fields=["chan_name", "dev_id", "chan_id"], name='fchan_uniq')
+        ]
 
 class Mode(models.Model):
     comment = models.CharField(max_length=1024)
