@@ -20,6 +20,18 @@ class FullChan(models.Model):
             models.UniqueConstraint(fields=["chan_name", "dev_id", "chan_id"], name='fchan_uniq')
         ]
 
+
+class TestMode(models.Model):
+    comment = models.CharField(max_length=1024)
+    author = models.CharField(max_length=50, default='')
+    stime = models.DateTimeField(auto_now_add=True)
+    archived = models.BooleanField(default=False)
+    data = JSONField(default=dict)
+
+    class Meta:
+        db_table = 'test_mode'
+
+
 class Mode(models.Model):
     comment = models.CharField(max_length=1024)
     author = models.CharField(max_length=50, default='')
