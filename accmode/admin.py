@@ -1,16 +1,11 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Mode, ModeData, FullChan
+from .models import Mode, FullChan
 
 
 class ModeAdmin(admin.ModelAdmin):
     list_display = ('author', 'comment', 'stime', 'archived')
-
-
-class ModeDataAdmin(admin.ModelAdmin):
-    list_display = ('fullchan', 'mode', 'utime', 'value', 'available')
-    search_fields = ['fullchan']
 
 
 class FullChanAdmin(admin.ModelAdmin):
@@ -18,7 +13,5 @@ class FullChanAdmin(admin.ModelAdmin):
     search_fields = ['chan_name']
 
 
-
 admin.site.register(Mode, ModeAdmin)
-admin.site.register(ModeData, ModeDataAdmin)
 admin.site.register(FullChan, FullChanAdmin)

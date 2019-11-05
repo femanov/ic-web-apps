@@ -20,6 +20,6 @@ urlpatterns = [
     #path('', ),
     path('admin/', admin.site.urls),
     path('accdb/', include('accdb.urls')),
-    path('netdb/', include('netdb.urls')),
+    #path('netdb/', include('netdb.urls')),
 
 ]

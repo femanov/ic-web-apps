@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'treebeard',
     'accdb',
     'accmode',
-    'netdb',
+    #'netdb',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'django',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'pg10-srv',
+        'HOST': 'pg11-srv',
         'PORT': '5432',
     },
     'icdata': {
@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'icdata',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'pg10-srv',
+        'HOST': 'pg11-srv',
         'PORT': '5432',
     },
     'accmode': {
@@ -108,26 +108,23 @@ DATABASES = {
         'NAME': 'accmode',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'pg10-srv',
+        'HOST': 'pg11-srv',
         'PORT': '5432',
     },
-    'netdata': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netdata',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'pg10-srv',
-        'PORT': '5432',
-    },
+    # 'netdata': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'netdata',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '',
+    #     'HOST': 'pg10-srv',
+    #     'PORT': '5432',
+    # },
 }
 
 DATABASE_ROUTERS = ['db_routers.router.AccdbRouter',
                     'db_routers.router.AccmodeRouter',
-                    'db_routers.router.NetdbRouter',
+                    #'db_routers.router.NetdbRouter',
                     'db_routers.router.DjangoRouter']
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
