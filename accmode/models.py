@@ -34,7 +34,7 @@ class Mode(models.Model):
     class Meta:
         db_table = 'mode'
         indexes = [
-            GinIndex
+            GinIndex(fields=['data'], name='data_gin')
         ]
 
 
