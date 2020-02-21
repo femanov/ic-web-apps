@@ -30,7 +30,7 @@ ext_srv = db.cur.fetchall()[0]
 print('extension devises server:', ext_srv)
 
 # select servers from DB
-os.mkdir("types")
+#os.mkdir("./types")
 
 db.execute('select id, name, info from namesys where soft order by name')
 srvs = db.cur.fetchall()

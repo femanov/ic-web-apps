@@ -57,7 +57,7 @@ class Chan(models.Model):
 
     class Meta:
         db_table = 'chan'
-        ordering = ['label', 'name', ]
+        ordering = ['ord', 'label', 'name', ]
 
 
 class MetaData(models.Model):
