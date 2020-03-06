@@ -12,7 +12,7 @@ class Namesys(models.Model):
     info = JSONField(default=dict)
 
     def __str__(self):
-        return self.label
+        return self.label + ' (' + self.name + ')'
 
     class Meta:
         db_table = 'namesys'

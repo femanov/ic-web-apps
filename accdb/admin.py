@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django import forms
 # Register your models here.
-from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, AccessType, Protocol
-
-from .models import Sys
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
+
+from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, AccessType, Protocol
+from .models import Sys
+
+
 
 class DevtypeForm(forms.ModelForm):
     class Meta:
@@ -17,7 +19,6 @@ class DevtypeForm(forms.ModelForm):
 
 
 class DevtypeAdmin(admin.ModelAdmin):
-    #form = DevtypeForm
     search_fields = ['name', 'description']
     filter_horizontal = ('chans', 'metadata')
 
