@@ -34,11 +34,13 @@ class NamesysAdmin(admin.ModelAdmin):
 
 
 class DevAdmin(admin.ModelAdmin):
-    list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled')
+    list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled', 'get_syss')
     list_filter = ['enabled', 'metadata', 'sys', 'namesys', 'devtype']
     search_fields = ['label', 'name', 'description']
-    filter_horizontal = ('devtype', 'metadata')
+    filter_horizontal = ('devtype', 'metadata',)
 
+    def get_syss(self, obj):
+        return [x.name for x in obj.sys.all()]
 
 class ChanAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'access_type', 'units',

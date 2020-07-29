@@ -124,7 +124,7 @@ class Sys(MP_Node):
     name = models.CharField(max_length=100, default='')
     label = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=1024, default='', blank=True, null=True)
-    devs = models.ManyToManyField(Dev, blank=True)
+    devs = models.ManyToManyField(Dev, related_name='sys', blank=True)
 
     def dev_count(self):
         return self.devcount
