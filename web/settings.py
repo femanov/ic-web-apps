@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'treebeard',
     'accdb',
     'accmode',
+    'acclog',
     #'netdb',
 ]
 
@@ -75,17 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'web.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -111,19 +101,20 @@ DATABASES = {
         'HOST': 'pg11-srv',
         'PORT': '5432',
     },
-    # 'netdata': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'netdata',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '',
-    #     'HOST': 'pg10-srv',
-    #     'PORT': '5432',
-    # },
+    'acclog': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'acclog',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'pg11-srv',
+        'PORT': '5432',
+    },
+
 }
 
 DATABASE_ROUTERS = ['db_routers.router.AccdbRouter',
                     'db_routers.router.AccmodeRouter',
-                    #'db_routers.router.NetdbRouter',
+                    'db_routers.router.AcclogRouter',
                     'db_routers.router.DjangoRouter']
 
 # Password validation
