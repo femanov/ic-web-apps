@@ -16,7 +16,7 @@ class Namesys(models.Model):
 
     class Meta:
         db_table = 'namesys'
-        ordering = ['id', ]
+        ordering = ['name', ]
 
 
 class AccessType(models.Model):
@@ -45,12 +45,12 @@ class Chan(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     units = models.CharField(max_length=100, blank=True, default='')
     label = models.CharField(max_length=100, blank=True, default='')
-    dtype = models.CharField(max_length=100, blank=True, default='')
+    dtype = models.CharField(max_length=100, blank=True, default='int32')
     dsize = models.IntegerField(default=1)
     ord = models.IntegerField(default=1)
     savable = models.BooleanField(default=True)
-    access_type = models.ForeignKey(AccessType, on_delete=models.SET_NULL, blank=True, null=True)
-    cprotocol = models.ForeignKey(Protocol, on_delete=models.SET_NULL, blank=True, null=True)
+    access_type = models.ForeignKey(AccessType, on_delete=models.SET_NULL, default=4, blank=True, null=True)
+    cprotocol = models.ForeignKey(Protocol, on_delete=models.SET_NULL, default=1, blank=True, null=True)
 
     def __str__(self):
         return self.label
