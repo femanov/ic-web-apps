@@ -33,9 +33,10 @@ class Mode(models.Model):
 
     class Meta:
         db_table = 'mode'
-        indexes = [
-            GinIndex(fields=['data'], name='data_gin')
-        ]
+        #indexes = [
+        #    this index 3 times bigger then data itself
+        #    GinIndex(fields=['data'], name='data_gin')
+        #]
 
 
 class ModeMark(models.Model):
