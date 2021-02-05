@@ -110,7 +110,7 @@ class Dev(models.Model):
 
     class Meta:
         db_table = 'dev'
-        ordering = ['ord', ]
+        ordering = ['ord']
 
 
 class SysManager(models.Manager):
