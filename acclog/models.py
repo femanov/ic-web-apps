@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField, JSONField
-
+from django.contrib.postgres.fields import ArrayField
+from django.db.models import JSONField
 
 class LogChan(models.Model):
     protocol = models.CharField(max_length=50, default='')

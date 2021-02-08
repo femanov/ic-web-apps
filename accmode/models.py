@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField, JSONField
-from django.contrib.postgres.indexes import GinIndex
+from django.contrib.postgres.fields import ArrayField
+from django.db.models import JSONField
 
 class FullChan(models.Model):
     protocol = models.CharField(max_length=50, default='')
@@ -33,10 +33,6 @@ class Mode(models.Model):
 
     class Meta:
         db_table = 'mode'
-        #indexes = [
-        #    this index 3 times bigger then data itself
-        #    GinIndex(fields=['data'], name='data_gin')
-        #]
 
 
 class ModeMark(models.Model):
