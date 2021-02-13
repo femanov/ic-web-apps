@@ -106,7 +106,12 @@ class Dev(models.Model):
         return self.metacount
 
     def __str__(self):
-        return self.label
+        # print(self.namesys, self.namesys.label)
+        try:
+            ret = self.namesys.label + ':' + self.label
+        except:
+            ret = "none" + ':' + self.label
+        return ret
 
     class Meta:
         db_table = 'dev'
