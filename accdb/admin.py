@@ -68,8 +68,8 @@ class DevTreeItemAdmin(admin.ModelAdmin):
 class MetaDataAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
-admin.site.register(Sys, SysAdmin)
 
+admin.site.register(Sys, SysAdmin)
 admin.site.register(Dev, DevAdmin)
 admin.site.register(Devtype, DevtypeAdmin)
 admin.site.register(Namesys, NamesysAdmin)
