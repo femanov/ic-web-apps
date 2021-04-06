@@ -163,3 +163,14 @@ class DevTreeItem(models.Model):
 
     class Meta:
         db_table = 'devtreeitem'
+
+
+class Bridge(models.Model):
+    name = models.CharField(max_length=100, blank=True, default='')
+    namesys = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
+    devs = models.ManyToManyField(Dev, blank=True)
+    readonly = models.BooleanField(default=False)
+    on_update = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'bridge'
