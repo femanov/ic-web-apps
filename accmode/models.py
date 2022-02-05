@@ -8,10 +8,10 @@ class FullChan(models.Model):
     cur_chan_name = models.CharField(max_length=1024, default='')
     access = models.CharField(max_length=10, default='')
     dtype = models.CharField(max_length=20, default='double')
-    dev_id = models.IntegerField(default=0)
-    chan_id = models.IntegerField(default=0)
+    dev_id = models.BigIntegerField(default=0)
+    chan_id = models.BigIntegerField(default=0)
     is_current = models.BooleanField(default=False)
-    systems = ArrayField(models.IntegerField(), default=list)
+    systems = ArrayField(models.BigIntegerField(), default=list)
 
     class Meta:
         db_table = 'fullchan'

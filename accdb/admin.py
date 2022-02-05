@@ -5,8 +5,7 @@ from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 
 from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, AccessType, Protocol
-from .models import Sys, Bridge
-
+from .models import Sys, Bridge, SrvMirror
 
 
 class DevtypeForm(forms.ModelForm):
@@ -74,3 +73,8 @@ class BridgeAdmin(admin.ModelAdmin):
     list_display = ('name', 'namesys')
     autocomplete_fields = ('namesys',)
     filter_horizontal = ('devs',)
+
+@admin.register(SrvMirror)
+class SrvMirrorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'source', 'description')
+
