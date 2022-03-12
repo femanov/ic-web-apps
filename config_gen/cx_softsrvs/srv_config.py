@@ -12,14 +12,11 @@ class SrvConfig:
         row = db.cur.fetchall()[0]
         self.name = row[0]
         self.def_soft = row[1]
-        self.fname = self.name.replace(':', '_') # for files
-        print(self.name, self.def_soft)
+        self.fname = self.name.replace(':', '_')
         self.brgs = self.bridges()
         self.dt_ids = self.devtype_ids()
-        print(self.dt_ids)
         self.dts = self.create_dts()
         self.devs = self.devs_of_srv()
-        self.save2file()
 
     def create_devs_dir(self):
         dirName = f"./types/{self.fname}"
@@ -69,7 +66,7 @@ class SrvConfig:
                    ' group by dev.id order by dev.ord', (self.sid,))
         devs = db.cur.fetchall()
         if self.def_soft:
-            print('adding extension')
+            # devices for default soft server, aka extensions
             db.execute('select dev.id,dev.name,array_agg(devtype.id order by devtype.id)'
                        ' from dev_devtype,devtype,dev,namesys where dev.id=dev_devtype.dev_id and dev_devtype.devtype_id=devtype.id'
                        ' and devtype.soft and dev.namesys_id=namesys.id and not namesys.soft'
@@ -101,7 +98,7 @@ class SrvConfig:
             else:
                 conf_file.write(f'dev {x[1]} {self.dts[ind].name}/noop ~ -\n')
 
-        # dridged devices
+        # bridged devices
         for b in self.brgs:
             ro = '!' if b.readonly else ''
             upd = '' if b.on_update else '~'

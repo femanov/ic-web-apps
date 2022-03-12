@@ -50,7 +50,7 @@ class ChanAdmin(admin.ModelAdmin):
 
 @admin.register(AccessType)
 class ChanAccessAdmin(admin.ModelAdmin):
-    list_display = ('access', 'savable', 'direct_loadable')
+    list_display = ('access', 'savable', 'direct_loadable', 'load_implemented')
 
 @admin.register(Protocol)
 class ChanProtocolAdmin(admin.ModelAdmin):

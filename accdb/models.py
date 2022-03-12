@@ -3,7 +3,22 @@ from django.db import models
 from django.db.models import Count
 from treebeard.mp_tree import MP_Node
 
-# Create your models here.
+
+# better to move this in separate place?
+dtypes = {
+    'int8': 'b',
+    'int16': 'h',
+    'int32': 'i',
+    'int': 'i',
+    'int64': 'q',
+    'float': 's',
+    'double': 'd',
+    'text': 't',
+    'utext': 'u',
+    '': 'd',
+}
+
+
 class Namesys(models.Model):
     name = models.CharField(max_length=300)
     label = models.CharField(max_length=100)
@@ -12,7 +27,7 @@ class Namesys(models.Model):
     info = JSONField(default=dict)
 
     def __str__(self):
-        return self.label + ' (' + self.name + ')'
+        return f"{self.label} ({self.name})"
 
     class Meta:
         db_table = 'namesys'
@@ -23,6 +38,7 @@ class AccessType(models.Model):
     access = models.CharField(max_length=10, default='r')
     savable = models.BooleanField(default=True)
     direct_loadable = models.BooleanField(default=True)
+    load_implemented = models.BooleanField(default=True)
 
     def __str__(self):
         return self.access
@@ -47,10 +63,18 @@ class Chan(models.Model):
     label = models.CharField(max_length=100, blank=True, default='')
     dtype = models.CharField(max_length=100, blank=True, default='int32')
     dsize = models.IntegerField(default=1)
+    params = models.CharField(max_length=100, blank=True, default='')
     ord = models.IntegerField(default=1)
     savable = models.BooleanField(default=True)
     access_type = models.ForeignKey(AccessType, on_delete=models.SET_NULL, default=4, blank=True, null=True)
     cprotocol = models.ForeignKey(Protocol, on_delete=models.SET_NULL, default=1, blank=True, null=True)
+
+    def cx_str_for_dt(self, num):
+        u = f" units:{self.units}" if len(self.units) > 0 else ''
+        return f"{self.name} {num} {self.params}{u}"
+
+    def cx_type_sig(self):
+        return f"{dtypes[self.dtype]}{self.dsize}"
 
     def __str__(self):
         return self.label
@@ -77,6 +101,25 @@ class Devtype(models.Model):
     soft = models.BooleanField(default=False)
     chans = models.ManyToManyField(Chan, blank=True)
     metadata = models.ManyToManyField(MetaData, blank=True)
+
+    def cx_str(self):
+        cs = self.chans.all()
+        cgs = {}
+        for x in cs:
+            ts = x.cx_type_sig()
+            if ts in cgs:
+                cgs[ts].append(x)
+            else:
+                cgs[ts] = [x]
+        cg_ts = [f"w{len(cgs[x])}{x}" for x in cgs]
+        dt_strs = [f"devtype {self.name} {','.join(cg_ts)}{'{'}"]
+        c_count = 0
+        for x in cgs:
+            for c in cgs[x]:
+                dt_strs.append(c.cx_str_for_dt(c_count))
+                c_count += 1
+        dt_strs.append('}')
+        return '\n'.join(dt_strs)
 
     def __str__(self):
         return self.name
@@ -106,11 +149,10 @@ class Dev(models.Model):
         return self.metacount
 
     def __str__(self):
-        # print(self.namesys, self.namesys.label)
         try:
-            ret = self.namesys.label + ':' + self.label
+            ret = f"{self.namesys.label}:{self.label}"
         except:
-            ret = "none" + ':' + self.label
+            ret = f"none:{self.label}"
         return ret
 
     class Meta:
@@ -169,7 +211,6 @@ class Bridge(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     namesys = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
     devs = models.ManyToManyField(Dev, blank=True)
-
     readonly = models.BooleanField(default=False)
     on_update = models.BooleanField(default=False)
 
@@ -181,6 +222,8 @@ class SrvMirror(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     description = models.CharField(max_length=1024, default='', blank=True, null=True)
     source = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
+    readonly = models.BooleanField(default=False)
+    on_update = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'srvmirror'

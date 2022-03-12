@@ -4,9 +4,9 @@ from django.contrib import admin
 from .models import LogChan, LogData
 
 
+@admin.register(LogChan)
 class LogChanAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['chan_name', 'cur_chan_name']
 
 
-admin.site.register(LogChan, LogChanAdmin)
 

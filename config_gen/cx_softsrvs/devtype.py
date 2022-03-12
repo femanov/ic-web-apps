@@ -1,5 +1,4 @@
 
-
 dtypes = {
     'int8':   'b',
     'int16':  'h',
@@ -12,6 +11,7 @@ dtypes = {
     'utext':  'u',
     '':       'd',
 }
+
 
 class DevType:
     def __init__(self, ids, db):
