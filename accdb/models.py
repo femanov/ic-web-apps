@@ -213,6 +213,8 @@ class Bridge(models.Model):
     devs = models.ManyToManyField(Dev, blank=True)
     readonly = models.BooleanField(default=False)
     on_update = models.BooleanField(default=False)
+    savable = models.BooleanField(default=True)
+
 
     class Meta:
         db_table = 'bridge'
@@ -224,6 +226,8 @@ class SrvMirror(models.Model):
     source = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
     readonly = models.BooleanField(default=False)
     on_update = models.BooleanField(default=False)
+    savable = models.BooleanField(default=True)
+
 
     class Meta:
         db_table = 'srvmirror'

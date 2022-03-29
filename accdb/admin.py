@@ -45,7 +45,7 @@ class DevAdmin(admin.ModelAdmin):
 class ChanAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'access_type', 'units',
                     'dtype', 'dsize', 'cprotocol', 'ord', 'savable',)
-    list_filter = ['cprotocol', 'devtype']
+    list_filter = ['cprotocol', 'devtype', 'dtype']
     search_fields = ['label', 'name']
 
 @admin.register(AccessType)
