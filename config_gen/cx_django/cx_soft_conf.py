@@ -14,11 +14,29 @@ print('Generation config-files for CX-servers')
 conf_dir = './configs'
 dts_basedir = f"{conf_dir}/types"
 
+# storage for host:[server-numbers]
+cx_srvs = {}
+
+
+def add_srv(namesys):
+    cx_host = namesys.cx_host()
+    srv_num = namesys.cx_srvnum()
+    if cx_host in cx_srvs:
+        if srv_num in cx_srvs[cx_host]:
+            print("WARNING: few namespaces in the same cx-server. Case support not yet implemented")
+        else:
+            cx_srvs[cx_host].append(srv_num)
+    else:
+        cx_srvs[cx_host] = [srv_num]
+
+
 soft_srvs = Namesys.objects.filter(soft=True)
 
 for srv in soft_srvs:
     print(srv)
-    fname = srv.name.replace(':', '_')
+    add_srv(srv)
+
+    fname = srv.name.replace(':', '-')
     srv_devs_dir = f"{dts_basedir}/{fname}"
     if not os.path.exists(srv_devs_dir):
         os.mkdir(srv_devs_dir)
@@ -26,7 +44,7 @@ for srv in soft_srvs:
     conf_file = open(f'{conf_dir}/devlist-{fname}.lst', 'w')
 
     # get regular devices of server
-    devs = [d for d in Dev.objects.filter(namesys=srv)]
+    devs = list(Dev.objects.filter(namesys=srv))
     dts = {}
     dev_dtns = {}
     for d in devs:
@@ -65,12 +83,15 @@ for srv in soft_srvs:
 
     # adding devices to server config
     for d in devs:
+        dt_name = dev_dtns[d.name]
+        dt = dts[dt_name]
+
         if '.' in d.name:
             dev_name = d.name.replace('.', '_')
-            conf_file.write(f'dev {dev_name} {dev_dtns[d.name]}/noop ~ -\n')
+            conf_file.write(f'dev {dev_name} {dt_name}/{dt.driver} ~ - {d.params}\n')
             conf_file.write(f'cpoint {d.name} {dev_name}\n')
         else:
-            conf_file.write(f'dev {d.name} {dev_dtns[d.name]}/noop ~ -\n')
+            conf_file.write(f'dev {d.name} {dev_dtns[d.name]}/{dt.driver} ~ - {d.params}\n')
 
     # Bridge devices configuration
     for b in brgs:
@@ -80,7 +101,7 @@ for srv in soft_srvs:
             if '.' in d.name:
                 dev_name = d.name.replace('.', '_')
                 conf_file.write(f'dev {dev_name} {ro}{dev_dtns[d.name]}/bridge ~ - @*{upd}:{d.namesys.name}.{d.name}\n')
-                conf_file.write(f'cpoint {d.name} {dev_name}s\n')
+                conf_file.write(f'cpoint {d.name} {dev_name}\n')
             else:
                 conf_file.write(f'dev {d.name} {ro}{dev_dtns[d.name]}/bridge ~ - @*{upd}:{d.namesys.name}.{d.name}\n')
 
@@ -97,7 +118,9 @@ for sm in s_mirrors:
     upd = '' if sm.on_update else '~'
     print(f'{sm.name}  src: {sm.source.name}')
 
-    fname = sm.name.replace(':', '_')
+    add_srv(sm)
+
+    fname = sm.name.replace(':', '-')
     srv_devs_dir = f"{dts_basedir}/{fname}"
     if not os.path.exists(srv_devs_dir):
        os.mkdir(srv_devs_dir)
@@ -148,9 +171,19 @@ for sm in s_mirrors:
         if '.' in d.name:
             dev_name = d.name.replace('.', '_')
             conf_file.write(f'dev {dev_name} {ro}{dev_dtns[d.name]}/bridge ~ - @*{upd}:{sm.source.name}.{d.name}\n')
-            conf_file.write(f'cpoint {d.name} {dev_name}s\n')
+            conf_file.write(f'cpoint {d.name} {dev_name}\n')
         else:
             conf_file.write(f'dev {d.name} {ro}{dev_dtns[d.name]}/bridge ~ - @*{upd}:{sm.source.name}.{d.name}\n')
 
     conf_file.close()
+
+print('generate configs for cx services starter')
+print(cx_srvs)
+print('\nWarning: cx-servers-HOST.conf files not supposed to be copied derectly to servers,')
+print('since some cx-servers can be configured separatly')
+
+for h in cx_srvs:
+    with open(f'{conf_dir}/cx-servers-{h}.conf', 'w') as cf:
+        cf.write(' '.join(cx_srvs[h]))
+
 

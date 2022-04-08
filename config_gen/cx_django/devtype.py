@@ -6,6 +6,10 @@ class SumDevtype:
     def __init__(self, dts):
         self.dts = dts
         self.name = "_".join([d.name for d in dts])
+        self.driver = 'noop'
+        if len(dts) == 1:
+            if dts[0].driver != "":
+                self.driver = dts[0].driver
 
     # almost the same code as in models definitions
     def cx_str(self):
@@ -18,7 +22,7 @@ class SumDevtype:
             else:
                 cgs[ts] = [x]
         cg_ts = [f"w{len(cgs[x])}{x}" for x in cgs]
-        dt_strs = [f"devtype {self.name} {','.join(cg_ts)}{'{'}"]
+        dt_strs = [f"devtype {self.name} {','.join(cg_ts)}{' {'}"]
         c_count = 0
         for x in cgs:
             for c in cgs[x]:

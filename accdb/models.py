@@ -26,6 +26,12 @@ class Namesys(models.Model):
     def_soft = models.BooleanField(default=False)
     info = JSONField(default=dict)
 
+    def cx_host(self):
+        return self.name.split(':')[0]
+
+    def cx_srvnum(self):
+        return self.name.split(':')[1].split('.')[0]
+
     def __str__(self):
         return f"{self.label} ({self.name})"
 
@@ -58,12 +64,22 @@ class Protocol(models.Model):
 
 
 class Chan(models.Model):
+    DT_CHOICES = [
+        ('int8', 'int8'),
+        ('int16', 'int16'),
+        ('int32', 'int32'),
+        ('int64', 'int64'),
+        ('float', 'float'),
+        ('double', 'double'),
+        ('text', 'text'),
+        ('utext', 'utext'),
+    ]
     name = models.CharField(max_length=100, blank=True, default='')
     units = models.CharField(max_length=100, blank=True, default='')
     label = models.CharField(max_length=100, blank=True, default='')
-    dtype = models.CharField(max_length=100, blank=True, default='int32')
+    dtype = models.CharField(max_length=100, blank=True, choices=DT_CHOICES, default='int32')
     dsize = models.IntegerField(default=1)
-    params = models.CharField(max_length=100, blank=True, default='')
+    params = models.CharField(max_length=200, blank=True, default='')
     ord = models.IntegerField(default=1)
     savable = models.BooleanField(default=True)
     access_type = models.ForeignKey(AccessType, on_delete=models.SET_NULL, default=4, blank=True, null=True)
@@ -99,6 +115,7 @@ class Devtype(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1024, blank=True, default='')
     soft = models.BooleanField(default=False)
+    driver = models.CharField(max_length=100, blank=True, default='')
     chans = models.ManyToManyField(Chan, blank=True)
     metadata = models.ManyToManyField(MetaData, blank=True)
 
@@ -112,7 +129,7 @@ class Devtype(models.Model):
             else:
                 cgs[ts] = [x]
         cg_ts = [f"w{len(cgs[x])}{x}" for x in cgs]
-        dt_strs = [f"devtype {self.name} {','.join(cg_ts)}{'{'}"]
+        dt_strs = [f"devtype {self.name} {','.join(cg_ts)}{' {'}"]
         c_count = 0
         for x in cgs:
             for c in cgs[x]:
@@ -143,6 +160,7 @@ class Dev(models.Model):
     enabled = models.BooleanField(default=True)
     ord = models.IntegerField(default=0)
     metadata = models.ManyToManyField(MetaData, blank=True)
+    params = models.CharField(max_length=200, blank=True, default='')
     objects = DevManager()
 
     def meta_count(self):
@@ -227,6 +245,12 @@ class SrvMirror(models.Model):
     readonly = models.BooleanField(default=False)
     on_update = models.BooleanField(default=False)
     savable = models.BooleanField(default=True)
+
+    def cx_host(self):
+        return self.name.split(':')[0]
+
+    def cx_srvnum(self):
+        return self.name.split(':')[1].split('.')[0]
 
 
     class Meta:

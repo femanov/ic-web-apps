@@ -31,6 +31,7 @@ class NamesysAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'soft', 'def_soft')
     search_fields = ['label', 'name']
 
+
 @admin.register(Dev)
 class DevAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'ord', 'description', 'namesys', 'meta_count', 'enabled', 'get_syss')
@@ -43,7 +44,7 @@ class DevAdmin(admin.ModelAdmin):
 
 @admin.register(Chan)
 class ChanAdmin(admin.ModelAdmin):
-    list_display = ('label', 'name', 'access_type', 'units',
+    list_display = ('label', 'name', 'params', 'access_type', 'units',
                     'dtype', 'dsize', 'cprotocol', 'ord', 'savable',)
     list_filter = ['cprotocol', 'devtype', 'dtype']
     search_fields = ['label', 'name']
