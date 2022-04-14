@@ -44,7 +44,7 @@ for srv in soft_srvs:
     conf_file = open(f'{conf_dir}/devlist-{fname}.lst', 'w')
 
     # get regular devices of server
-    devs = list(Dev.objects.filter(namesys=srv))
+    devs = list(Dev.objects.filter(namesys=srv, enabled=True))
     dts = {}
     dev_dtns = {}
     for d in devs:
@@ -56,7 +56,7 @@ for srv in soft_srvs:
     # get extension devices in case it's default software server
     if srv.def_soft:
         print('default software devices server, adding extension devs')
-        ext_devs = [d for d in Dev.objects.filter(namesys__soft=False, devtype__soft=True)]
+        ext_devs = [d for d in Dev.objects.filter(namesys__soft=False, devtype__soft=True, enabled=True)]
         for d in ext_devs:
             # extensions uses only software devtypes
             dt = SumDevtype(d.devtype.filter(soft=True))
@@ -69,7 +69,7 @@ for srv in soft_srvs:
     brgs = [b for b in Bridge.objects.filter(namesys=srv)]
     for b in brgs:
         print("bridge: ", b.name)
-        for d in b.devs.all():
+        for d in b.devs.filter(enabled=True):
             dt = SumDevtype(Devtype.objects.filter(dev=d))
             dev_dtns[d.name] = dt.name
             if dt.name not in dts:
@@ -97,7 +97,7 @@ for srv in soft_srvs:
     for b in brgs:
         ro = '!' if b.readonly else ''
         upd = '' if b.on_update else '~'
-        for d in b.devs.all():
+        for d in b.devs.filter(enabled=True):
             if '.' in d.name:
                 dev_name = d.name.replace('.', '_')
                 conf_file.write(f'dev {dev_name} {ro}{dev_dtns[d.name]}/bridge ~ - @*{upd}:{d.namesys.name}.{d.name}\n')
@@ -128,7 +128,7 @@ for sm in s_mirrors:
     conf_file = open(f'{conf_dir}/devlist-{fname}.lst', 'w')
 
     # get regular devices of server
-    devs = [d for d in Dev.objects.filter(namesys=sm.source)]
+    devs = list(Dev.objects.filter(namesys=sm.source, enabled=True))
     dts = {}
     dev_dtns = {}
     for d in devs:
@@ -139,7 +139,7 @@ for sm in s_mirrors:
 
     # get extension devices in case it's default software server
     if sm.source.def_soft:
-        ext_devs = [d for d in Dev.objects.filter(namesys__soft=False, devtype__soft=True)]
+        ext_devs = list(Dev.objects.filter(namesys__soft=False, devtype__soft=True, enabled=True))
         for d in ext_devs:
             # extensions uses only software devtypes
             dt = SumDevtype(d.devtype.filter(soft=True))
@@ -152,7 +152,7 @@ for sm in s_mirrors:
     brgs = [b for b in Bridge.objects.filter(namesys=sm.source)]
     for b in brgs:
         print("bridge: ", b.name)
-        brg_devs = [d for d in b.devs.all()]
+        brg_devs = list(b.devs.filter(enabled=True))
         for d in brg_devs:
             dt = SumDevtype(d.devtype.all())
             dev_dtns[d.name] = dt.name
