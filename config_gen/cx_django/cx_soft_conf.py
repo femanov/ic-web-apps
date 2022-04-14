@@ -56,7 +56,7 @@ for srv in soft_srvs:
     # get extension devices in case it's default software server
     if srv.def_soft:
         print('default software devices server, adding extension devs')
-        ext_devs = [d for d in Dev.objects.filter(namesys__soft=False, devtype__soft=True, enabled=True)]
+        ext_devs = list(Dev.objects.filter(namesys__soft=False, devtype__soft=True, enabled=True))
         for d in ext_devs:
             # extensions uses only software devtypes
             dt = SumDevtype(d.devtype.filter(soft=True))
