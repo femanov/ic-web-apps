@@ -14,6 +14,12 @@ print('Generation config-files for CX-servers')
 conf_dir = './configs'
 dts_basedir = f"{conf_dir}/types"
 
+if not os.path.exists(conf_dir):
+    os.mkdir(conf_dir)
+
+if not os.path.exists(dts_basedir):
+    os.mkdir(dts_basedir)
+
 # storage for host:[server-numbers]
 cx_srvs = {}
 
