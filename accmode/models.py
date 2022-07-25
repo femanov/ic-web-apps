@@ -29,7 +29,7 @@ class Mode(models.Model):
     info = JSONField(default=dict)
 
     def __str__(self):
-        return self.comment
+        return f'{self.comment}({self.pk})'
 
     class Meta:
         db_table = 'mode'
