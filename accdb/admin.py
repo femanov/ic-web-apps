@@ -5,7 +5,7 @@ from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 
 from .models import Dev, Devtype, Namesys, Chan, DevTree, DevTreeItem, MetaData, AccessType, Protocol
-from .models import Sys, Bridge, SrvMirror
+from .models import Sys, AutoLoad, Bridge, SrvMirror
 
 
 class DevtypeForm(forms.ModelForm):
@@ -16,15 +16,24 @@ class DevtypeForm(forms.ModelForm):
             'chans': forms.SelectMultiple(attrs={'size': 30})
         }
 
+
 @admin.register(Devtype)
 class DevtypeAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     filter_horizontal = ('chans', 'metadata')
 
+
 @admin.register(Sys)
 class SysAdmin(TreeAdmin):
     form = movenodeform_factory(Sys)
     filter_horizontal = ('devs',)
+
+
+@admin.register(AutoLoad)
+class AutoLoadAdmin(admin.ModelAdmin):
+    list_display = ('name', 'mark_name', 'enabled')
+    filter_horizontal = ('syss',)
+
 
 @admin.register(Namesys)
 class NamesysAdmin(admin.ModelAdmin):
@@ -42,6 +51,7 @@ class DevAdmin(admin.ModelAdmin):
     def get_syss(self, obj):
         return [x.name for x in obj.sys.all()]
 
+
 @admin.register(Chan)
 class ChanAdmin(admin.ModelAdmin):
     list_display = ('label', 'name', 'params', 'access_type', 'units',
@@ -49,31 +59,38 @@ class ChanAdmin(admin.ModelAdmin):
     list_filter = ['cprotocol', 'devtype', 'dtype']
     search_fields = ['label', 'name']
 
+
 @admin.register(AccessType)
 class ChanAccessAdmin(admin.ModelAdmin):
     list_display = ('access', 'savable', 'direct_loadable', 'load_implemented')
+
 
 @admin.register(Protocol)
 class ChanProtocolAdmin(admin.ModelAdmin):
     list_display = ('protocol',)
 
+
 @admin.register(DevTree)
 class DevTreeAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
 
 @admin.register(DevTreeItem)
 class DevTreeItemAdmin(admin.ModelAdmin):
     list_display = ('devtree', 'dev', 'parent')
 
+
 @admin.register(MetaData)
 class MetaDataAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
 
 @admin.register(Bridge)
 class BridgeAdmin(admin.ModelAdmin):
     list_display = ('name', 'namesys')
     autocomplete_fields = ('namesys',)
     filter_horizontal = ('devs',)
+
 
 @admin.register(SrvMirror)
 class SrvMirrorAdmin(admin.ModelAdmin):

@@ -209,6 +209,21 @@ class Sys(MP_Node):
         db_table = 'sys'
 
 
+class AutoLoad(models.Model):
+    name = models.CharField(max_length=100, default='')
+    enabled = models.BooleanField(default=True)
+    mark_name = models.CharField(max_length=4, default='')
+    signal_chan = models.CharField(max_length=100, default='')
+    syss = models.ManyToManyField(Sys, blank=True)
+    access_types = models.ManyToManyField(AccessType, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "autoload"
+
+
 # some data about device hierarchic structures like
 # possibly need to switch to MP_node
 class DevTree(models.Model):
