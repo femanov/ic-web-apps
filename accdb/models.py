@@ -166,6 +166,7 @@ class Dev(models.Model):
     namesys = models.ForeignKey(Namesys, on_delete=models.SET_NULL, blank=True, null=True)
     devtype = models.ManyToManyField(Devtype)
     enabled = models.BooleanField(default=True)
+    mode_part = models.BooleanField(default=True)
     ord = models.IntegerField(default=0)
     metadata = models.ManyToManyField(MetaData, blank=True)
     params = models.CharField(max_length=200, blank=True, default='')
